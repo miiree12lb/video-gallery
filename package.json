@@ -1,6 +1,6 @@
 {
-    "homepage": "/",
-    "name": "portfolio",
+    "homepage": "https://miiree12lb.github.io/video-galery/",
+    "name": "video-gallery",
     "source": "index.html",
     "scripts": {
         "start": "react-scripts start",
