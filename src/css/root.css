@@ -1,0 +1,13 @@
+html,
+body {
+    height: 90vh;
+    margin: 0;
+    background-color:#151515;
+    font-family: "Segoe UI", Verdana, sans-serif;
+    color: white;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+h1, h3 {
+    color: #94692d;
+}
