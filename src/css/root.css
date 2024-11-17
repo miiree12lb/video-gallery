@@ -11,3 +11,20 @@ body {
 h1, h3 {
     color: #94692d;
 }
+#footer{
+    margin-top: auto;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #94692d;
+}
+#footer-text {
+    text-align: center;
+}
+#footer-logo-image {
+    width: 100px;
+    height: auto;
+}
