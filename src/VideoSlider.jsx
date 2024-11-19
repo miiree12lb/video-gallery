@@ -61,6 +61,8 @@ function VideoSlider({ videoList }) {
                             <DriveVideoEmbed
                                 videoUrl={video.videoUrl}
                                 vertical={video.vertical}
+                                title={video.title}
+                                subtitle={video.subtitle}
                             />
                         </div>
                     ))}

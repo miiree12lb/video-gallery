@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 // @ts-ignore
 import './css/slider.css';
 
-function DriveVideoEmbed({ videoUrl, vertical}) {
+function DriveVideoEmbed({ videoUrl, vertical, title, subtitle}) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
 
     let width, height;
@@ -23,21 +23,27 @@ function DriveVideoEmbed({ videoUrl, vertical}) {
 	}
 	
 	return (
-        <div>
-            <iframe
-                src={videoUrl}
-                style={{
+        <>
+            <div>
+                <iframe
+                    src={videoUrl}
+                    style={{
 
-                    top: 0,
-                    left: 0,
-                    width: width,
-                    height: height,
-                    border: "none",
-                }}
-                allow="autoplay"
-                title="Google Drive Video"
-            ></iframe>
-        </div>
+                        top: 0,
+                        left: 0,
+                        width: width,
+                        height: height,
+                        border: "none",
+                    }}
+                    allow="autoplay"
+                    title="Google Drive Video"
+                ></iframe>
+            </div>
+            <div id="title">
+                <h3>{title}</h3>
+                <p>{subtitle}</p>
+            </div>
+        </>
     );
 }
 
