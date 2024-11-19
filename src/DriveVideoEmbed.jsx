@@ -1,16 +1,25 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 // @ts-ignore
 import './css/slider.css';
 
 function DriveVideoEmbed({ videoUrl, vertical}) {
+    const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
+
     let width, height;
 	if (vertical) {
-		width="15vw";
-        height="26.6666666666vw";
+        if (isDesktop) {
+            width="15vw";
+        }
+        else {
+            width="30vw";
+        }
+		
+        height = `${(parseFloat(width) * 16) / 9}vw`;
 	}
 	else {
-		height="15vw" 
-        width="26.6666666666vw"
+		height="15vw";
+        width="26.6666666666vw";
 	}
 	
 	return (
