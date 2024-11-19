@@ -23,27 +23,21 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle}) {
 	}
 	
 	return (
-        <>
-            <div>
-                <iframe
-                    src={videoUrl}
-                    style={{
+        <div>
+            <iframe
+                src={videoUrl}
+                style={{
 
-                        top: 0,
-                        left: 0,
-                        width: width,
-                        height: height,
-                        border: "none",
-                    }}
-                    allow="autoplay"
-                    title="Google Drive Video"
-                ></iframe>
-            </div>
-            <div id="title">
-                <h3>{title}</h3>
-                <p>{subtitle}</p>
-            </div>
-        </>
+                    top: 0,
+                    left: 0,
+                    width: width,
+                    height: height,
+                    border: "none",
+                }}
+                allow="autoplay"
+                title="Google Drive Video"
+            ></iframe>
+        </div>
     );
 }
 

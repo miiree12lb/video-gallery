@@ -1,7 +1,7 @@
 .arrows-videos-container{
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -12,16 +12,25 @@
     gap: 20px;
     align-items: center;
     overflow: hidden;
+    columns: 4;
 }
 
 .arrows {
     background-color: #151515;
     color: #94692D;
-    font-size: 30px;
     border: none;
     cursor: pointer;
 }
 
 .arrows:hover{
     color: #FF4136;
+}
+h3, p {
+    margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+    .videos-container {
+        columns: 2;
+    }
 }
