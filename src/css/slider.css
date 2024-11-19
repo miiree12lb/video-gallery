@@ -1,0 +1,27 @@
+.arrows-videos-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.videos-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.arrows {
+    background-color: #151515;
+    color: #94692D;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+.arrows:hover{
+    color: #FF4136;
+}
