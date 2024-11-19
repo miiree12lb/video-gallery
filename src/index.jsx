@@ -10,7 +10,7 @@ import Footer from "./Footer.jsx";
 
 function Root() {
     const travelVideos = [                   
-        {videoUrl:"https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer"}
+        {videoUrl:"https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24"}
     ]
 
     return (
