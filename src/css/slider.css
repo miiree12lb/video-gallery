@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: row;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
     columns: 4;
 }
@@ -20,13 +20,18 @@
     color: #94692D;
     border: none;
     cursor: pointer;
+    font-size: 5vw;
 }
 
 .arrows:hover{
     color: #FF4136;
 }
+h3 {
+    color: #FF4136;
+}
 h3, p {
     margin: 0;
+    text-align: center;
 }
 
 .dots-container {
@@ -43,6 +48,7 @@ h3, p {
     border: solid 1px #94692D;
     border-radius: 50%;
     display: inline-block;
+    cursor: pointer;
 }
 
 .dot.active {

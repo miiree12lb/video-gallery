@@ -37,18 +37,26 @@ function VideoSlider({ videoList }) {
                     </button>
                 )}
 
-                {displayVideos.map((video) => (
-                    <div key={video.id} className="video-item">
-                        <DriveVideoEmbed
-                            videoUrl={video.videoUrl}
-                            vertical={video.vertical}
-                            title={video.title}
-                            subtitle={video.subtitle}
-                        />
-                        <h3>{video.title}</h3>
-                        <p>{video.subtitle}</p>
-                    </div>
-                ))}
+                <div className="videos-container">  
+                    {displayVideos.map((video) => (
+                        <div>
+                            <div key={video.id} className="video-item">
+                                <DriveVideoEmbed
+                                    videoUrl={video.videoUrl}
+                                    vertical={video.vertical}
+                                    title={video.title}
+                                    subtitle={video.subtitle}
+                                />
+                            </div>
+                            <div>
+                                <h3>{video.title}</h3>
+                                <p>{video.subtitle}</p>
+                            </div>
+                        </div>
+                        
+                    ))}
+                </div>
+                    
 
                 {videoList.length > visibleVideos && (
                     <button className="arrows" onClick={handleNext}>

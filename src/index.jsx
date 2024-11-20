@@ -9,9 +9,16 @@ import Footer from "./Footer.jsx";
 
 
 function Root() {
-    const travelVideos = [                   
-        {id: 0, videoUrl:"https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24"}
+    let travelVideos = [                   
+        {videoUrl:"https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24"}
     ]
+
+    function assignVideoIds(videos) {
+        return videos.map((video, id) => ({ ...video, id }));
+    }
+
+    
+    travelVideos = assignVideoIds(travelVideos);
 
     return (
         <BrowserRouter>
