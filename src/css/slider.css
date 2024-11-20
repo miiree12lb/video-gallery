@@ -29,6 +29,27 @@ h3, p {
     margin: 0;
 }
 
+.dots-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    border: solid 1px #94692D;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.active {
+    background-color: #94692D;
+}
+
+
 @media screen and (max-width: 800px) {
     .videos-container {
         columns: 2;
