@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 // @ts-ignore
 import './css/navbar.css';
 //@ts-ignore
@@ -19,7 +20,7 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory }) {
         <div className="nav-bar">
             <div className="nav-bar-left">
                 <div className="chip">
-                    <img src={logo} alt="logo" width="50" height="50" />
+                    <Link to="https://miiree12lb.site/"><img src={logo} alt="logo" width="50" height="50" /></Link>
                     Video Gallery
                 </div>
 
