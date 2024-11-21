@@ -11,9 +11,10 @@ function Root() {
     const viewRef = useRef(null);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const [searchQuery, setSearchQuery] = useState("");
 
     let travelVideos = [
-        { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24" }
+        { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24" },
     ];
 
     function assignVideoIds(videos) {
@@ -30,19 +31,29 @@ function Root() {
         }
     }, []);
 
+    const filterVideos = (videos) => {
+        if (!searchQuery) return videos;
+        return videos.filter(
+            (video) =>
+                video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                video.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    };
+
     return (
         <BrowserRouter>
-            <Nabvar 
-                categories={categories} 
-                selectedCategory={selectedCategory} 
-                setSelectedCategory={setSelectedCategory} 
+            <Nabvar
+                categories={categories}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                setSearchQuery={setSearchQuery}
             />
 
             <div id="view" ref={viewRef}>
                 {selectedCategory === "All" || selectedCategory === "Travel" ? (
                     <div>
                         <h2>Travel</h2>
-                        <VideoSlider videoList={travelVideos} />
+                        <VideoSlider videoList={filterVideos(travelVideos) || []} />
                     </div>
                 ) : null}
             </div>

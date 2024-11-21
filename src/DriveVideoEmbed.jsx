@@ -35,6 +35,7 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle}) {
                     border: "none",
                 }}
                 allow="autoplay"
+                allowFullScreen
                 title="Google Drive Video"
             ></iframe>
         </div>

@@ -55,6 +55,13 @@ h3, p {
     background-color: #94692D;
 }
 
+.no-videos-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #666;
+    margin: 20px 0;
+
+}
 
 @media screen and (max-width: 800px) {
     .videos-container {

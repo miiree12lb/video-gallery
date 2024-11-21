@@ -11,20 +11,31 @@ function VideoSlider({ videoList }) {
         const videos = [];
         for (let i = 0; i < visibleVideos; i++) {
             const video = videoList[(startIndex + i) % videoList.length];
-            if (!videos.some((v) => v.id === video.id)) {
+            if (video && video.id !== undefined && !videos.some((v) => v.id === video.id)) {
                 videos.push(video);
+            } else {
+                console.error("Invalid video object:", video);
             }
         }
         return videos;
     };
 
     const handleNext = () => {
-        setInitialId(initialId + visibleVideos) % videoList.length;
+        setInitialId((prevId) => (prevId + visibleVideos) % videoList.length);
     };
 
     const handlePrev = () => {
-        setInitialId(initialId - visibleVideos + videoList.length) % videoList.length;
+        setInitialId((prevId) => (prevId - visibleVideos + videoList.length) % videoList.length);
     };
+
+    if (!Array.isArray(videoList)) {
+        console.error("Invalid or empty videoList:", videoList);
+        return null;
+    }
+
+    if (videoList.length === 0) {
+        return <p className="no-videos-message">No videos match your search.</p>;
+    }
 
     const displayVideos = getDisplayVideos(initialId);
 
@@ -37,26 +48,20 @@ function VideoSlider({ videoList }) {
                     </button>
                 )}
 
-                <div className="videos-container">  
+                <div className="videos-container">
                     {displayVideos.map((video) => (
-                        <div>
-                            <div key={video.id} className="video-item">
-                                <DriveVideoEmbed
-                                    videoUrl={video.videoUrl}
-                                    vertical={video.vertical}
-                                    title={video.title}
-                                    subtitle={video.subtitle}
-                                />
-                            </div>
-                            <div>
-                                <h3>{video.title}</h3>
-                                <p>{video.subtitle}</p>
-                            </div>
+                        <div key={video.id} className="video-item">
+                            <DriveVideoEmbed
+                                videoUrl={video.videoUrl}
+                                vertical={video.vertical}
+                                title={video.title}
+                                subtitle={video.subtitle}
+                            />
+                            <h3>{video.title}</h3>
+                            <p>{video.subtitle}</p>
                         </div>
-                        
                     ))}
                 </div>
-                    
 
                 {videoList.length > visibleVideos && (
                     <button className="arrows" onClick={handleNext}>
@@ -77,5 +82,6 @@ function VideoSlider({ videoList }) {
         </div>
     );
 }
+
 
 export default VideoSlider;
