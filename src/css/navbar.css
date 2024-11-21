@@ -1,0 +1,67 @@
+.nav-bar {
+    position: fixed;
+    background-color: #292929;
+    top: 0;
+    left: 0px;
+    right: 0px;
+    padding-right: 5%;
+    padding-left: 5%;
+    align-items: center;
+}
+
+.nav-bar-left {
+    align-items: center;
+    height: 70px;
+    display: flex;
+    gap: 30px
+}
+#category{
+    font-size: 16px;
+    background-color: #292929;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+i {
+    padding-left: 10px;
+}
+.dropdown-content {
+    position: absolute;
+}
+.radio-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-top: 20px;
+    background-color: #292929;
+    padding: 10px 20px;
+}
+input[type=radio] {
+    display: none;
+    width: 100%;
+}
+input[type=radio]:checked + span {
+    color: #94692D;
+    font-weight: bold;
+}
+label > span {
+    cursor: pointer;
+}
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #292929;
+    border: solid 1px #94692D;
+}
+
+.chip img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
