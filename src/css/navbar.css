@@ -9,6 +9,7 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    min-height: 70px;
 }
 
 .nav-bar-left {
@@ -89,6 +90,12 @@ input[type="text"] {
     border-radius: 20px;
     padding-left: 5px;
     border: none;
+}
+
+@media screen and (max-width: 700px) {
+    input[type="text"] {
+        width: 70vw;
+    }
 }
 
 @media screen and (max-width: 500px) {

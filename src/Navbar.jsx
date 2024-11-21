@@ -1,12 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 // @ts-ignore
 import './css/navbar.css';
-//@ts-ignore
+// @ts-ignore
 import logo from "./assets/images/logo.png";
 
 function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQuery }) {
+    const isDesktop = useMediaQuery({ query: "(min-width: 701px)" });
     const [isOpen, setIsOpen] = useState(false);
+    const [showLeftNav, setShowLeftNav] = useState(true);
+    const [showSearchBar, setShowSearchBar] = useState(true);
+    const searchBarRef = useRef(null); // Ref for the search bar
+
+    useEffect(() => {
+        setShowSearchBar(isDesktop);
+    }, [isDesktop]);
+
+    // Handle clicks outside the search bar
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+                // Hide the search bar and show the left nav if not in desktop mode
+                if (!isDesktop) {
+                    setShowSearchBar(false);
+                    setShowLeftNav(true);
+                }
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isDesktop]);
 
     const handleSearch = (event) => {
         setSearchQuery(event.target.value);
@@ -20,54 +47,65 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
         setSelectedCategory(event.target.value);
     };
 
+    const handleShowSearchBar = () => {
+        if (isDesktop) return;
+
+        setShowLeftNav(!showLeftNav);
+        setShowSearchBar(!showSearchBar);
+    };
+
     return (
         <div className="nav-bar">
-            <div className="nav-bar-left">
-                <div className="chip">
-                    <Link to="https://miiree12lb.site/">
-                        <img src={logo} alt="logo" width="50" height="50" />
-                    </Link>
-                    Video Gallery
-                </div>
+            {showLeftNav && (
+                <div className="nav-bar-left">
+                    <div className="chip">
+                        <Link to="https://miiree12lb.site/">
+                            <img src={logo} alt="logo" width="50" height="50" />
+                        </Link>
+                        Video Gallery
+                    </div>
 
-                <div className="dropdown">
-                    <button id="category" onClick={toggleIcon}>
-                        Category: {selectedCategory}
-                        <i
-                            id="caret"
-                            className={`fa ${isOpen ? "fa-caret-up" : "fa-caret-down"}`}
-                        />
-                    </button>
+                    <div className="dropdown">
+                        <button id="category" onClick={toggleIcon}>
+                            Category: {selectedCategory}
+                            <i
+                                id="caret"
+                                className={`fa ${isOpen ? "fa-caret-up" : "fa-caret-down"}`}
+                            />
+                        </button>
 
-                    {isOpen && (
-                        <div className="dropdown-content">
-                            <div className="radio-buttons">
-                                {categories.map((category, index) => (
-                                    <label key={index} className="custom-radio">
-                                        <input
-                                            type="radio"
-                                            name="category"
-                                            value={category}
-                                            checked={selectedCategory === category}
-                                            onChange={handleCategoryChange}
-                                        />
-                                        <span>{category}</span>
-                                    </label>
-                                ))}
+                        {isOpen && (
+                            <div className="dropdown-content">
+                                <div className="radio-buttons">
+                                    {categories.map((category, index) => (
+                                        <label key={index} className="custom-radio">
+                                            <input
+                                                type="radio"
+                                                name="category"
+                                                value={category}
+                                                checked={selectedCategory === category}
+                                                onChange={handleCategoryChange}
+                                            />
+                                            <span>{category}</span>
+                                        </label>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
-            </div>
+            )}
 
-            <div className="nav-bar-right">
-                <input
-                    type="text"
-                    placeholder="Search by (sub)title..."
-                    onChange={handleSearch}
-                />
+            <div className="nav-bar-right" ref={searchBarRef}>
+                {showSearchBar && (
+                    <input
+                        type="text"
+                        placeholder="Search by (sub)title..."
+                        onChange={handleSearch}
+                    />
+                )}
 
-                <button className="search-button">
+                <button className="search-button" onClick={handleShowSearchBar}>
                     <i className="fa fa-search"></i>
                 </button>
             </div>
@@ -76,4 +114,3 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
 }
 
 export default Nabvar;
-
