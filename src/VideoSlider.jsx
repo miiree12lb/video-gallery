@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import DriveVideoEmbed from "./DriveVideoEmbed.jsx";
 import { useMediaQuery } from "react-responsive";
 
-function VideoSlider({ videoList }) {
+function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
     const visibleVideos = isDesktop ? 4 : 2;
     const [initialId, setInitialId] = useState(0);
+
+    function assignListIds(videos) {
+        return videos.map((video, listId) => ({ ...video, listId }));
+    }
+
+    videoList = assignListIds(videoList);
 
     const getDisplayVideos = (startIndex) => {
         const videos = [];
         for (let i = 0; i < visibleVideos; i++) {
             const video = videoList[(startIndex + i) % videoList.length];
-            if (video && video.id !== undefined && !videos.some((v) => v.id === video.id)) {
+            if (video && video.listId !== undefined && !videos.some((v) => v.listId === video.listId)) {
                 videos.push(video);
-            } else {
-                console.error("Invalid video object:", video);
             }
         }
         return videos;
@@ -26,6 +30,20 @@ function VideoSlider({ videoList }) {
 
     const handlePrev = () => {
         setInitialId((prevId) => (prevId - visibleVideos + videoList.length) % videoList.length);
+    };
+
+    const handleVideoPlay = (videoId) => {
+        if (currentVideoId && currentVideoId !== videoId) {
+            const currentIframe = document.getElementById(`iframe-${currentVideoId}`);
+            if (currentIframe) {
+                currentIframe.contentWindow.postMessage(
+                    '{"event":"command","func":"pauseVideo","args":""}',
+                    "*"
+                );
+            }
+        }
+
+        setCurrentVideoId(videoId);
     };
 
     if (!Array.isArray(videoList)) {
@@ -56,6 +74,10 @@ function VideoSlider({ videoList }) {
                                 vertical={video.vertical}
                                 title={video.title}
                                 subtitle={video.subtitle}
+                                videoId={video.id}
+                                isPlaying={currentVideoId === video.id}
+                                onPlay={handleVideoPlay}
+                                thumbnail={video.thumbnail}
                             />
                             <h3>{video.title}</h3>
                             <p>{video.subtitle}</p>
@@ -74,7 +96,7 @@ function VideoSlider({ videoList }) {
                 {Array.from({ length: videoList.length }, (_, i) => (
                     <span
                         key={i}
-                        className={`dot ${displayVideos.some((v) => v.id === i) ? "active" : ""}`}
+                        className={`dot ${displayVideos.some((v) => v.listId === i) ? "active" : ""}`}
                         onClick={() => setInitialId(i)}
                     ></span>
                 ))}
@@ -83,5 +105,5 @@ function VideoSlider({ videoList }) {
     );
 }
 
-
 export default VideoSlider;
+
