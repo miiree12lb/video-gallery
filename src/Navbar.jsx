@@ -11,21 +11,24 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
     const [isOpen, setIsOpen] = useState(false);
     const [showLeftNav, setShowLeftNav] = useState(true);
     const [showSearchBar, setShowSearchBar] = useState(true);
-    const searchBarRef = useRef(null); // Ref for the search bar
+    const searchBarRef = useRef(null); 
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         setShowSearchBar(isDesktop);
     }, [isDesktop]);
 
-    // Handle clicks outside the search bar
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
-                // Hide the search bar and show the left nav if not in desktop mode
                 if (!isDesktop) {
                     setShowSearchBar(false);
                     setShowLeftNav(true);
                 }
+            }
+
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
             }
         };
 
@@ -65,7 +68,7 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                         Video Gallery
                     </div>
 
-                    <div className="dropdown">
+                    <div className="dropdown" ref={dropdownRef}>
                         <button id="category" onClick={toggleIcon}>
                             Category: {selectedCategory}
                             <i
