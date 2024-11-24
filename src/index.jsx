@@ -22,7 +22,7 @@ function Root() {
 
     const initialTravelVideos = [
         { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
-        { videoUrl: "https://drive.google.com/file/d/1wHTi6njdK9dYeCyhRRL8A-sdMJEuvtjv/preview", vertical: true, title: "London", thumbnail: londonThumb}
+        { videoUrl: "https://drive.google.com/file/d/1K-53KMVX9t_6k7_impheHPYGNb1K2jjO/preview", vertical: true, title: "London", thumbnail: londonThumb}
     ];
 
     useEffect(() => {
