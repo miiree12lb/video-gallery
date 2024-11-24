@@ -22,6 +22,7 @@ function Root() {
 
     const initialTravelVideos = [
         { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
+        { videoUrl: "https://drive.google.com/file/d/1wHTi6njdK9dYeCyhRRL8A-sdMJEuvtjv/preview", vertical: true, title: "London", thumbnail: londonThumb}
     ];
 
     useEffect(() => {
@@ -41,8 +42,8 @@ function Root() {
         if (!searchQuery) return videos;
         return videos.filter(
             (video) =>
-                video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                video.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+                (video.title !== undefined && video.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                (video.subtitle !== undefined && video.subtitle.toLowerCase().includes(searchQuery.toLowerCase()))
         );
     };
 
