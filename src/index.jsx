@@ -9,6 +9,7 @@ import Footer from "./Footer.jsx";
 import Nabvar from "./Navbar.jsx";
 
 import wisconsinThumb from "./assets/thumbnails/wisconsinThumb.png";
+import londonThumb from "./assets/thumbnails/londonThumb.png";
 
 function Root() {
     const viewRef = useRef(null);

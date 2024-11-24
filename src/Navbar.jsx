@@ -109,7 +109,7 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                 )}
 
                 <button className="search-button" onClick={handleShowSearchBar}>
-                    <i className="fa fa-search"></i>
+                    <i id="search" className="fa fa-search"></i>
                 </button>
             </div>
         </div>

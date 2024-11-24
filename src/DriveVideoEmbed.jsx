@@ -59,21 +59,23 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
                 </div>
             ) : (
                 <iframe
-                    ref={iframeRef}
-                    id={`iframe-${videoId}`}
-                    src={videoUrl}
-                    style={{
-                        top: 0,
-                        left: 0,
-                        width,
-                        height,
-                        border: "none",
-                        borderRadius: "5px",
-                    }}
-                    allow="autoplay; encrypted-media"
-                    allowFullScreen
-                    title={title}
-                ></iframe>
+    ref={iframeRef}
+    id={`iframe-${videoId}`}
+    src={videoUrl}
+    style={{
+        top: 0,
+        left: 0,
+        width,
+        height,
+        border: "none",
+        borderRadius: "5px",
+    }}
+    allow="autoplay; encrypted-media"
+    allowFullScreen
+    allowfullscreen="true"
+    title={title}
+></iframe>
+
             )}
         </div>
     );
