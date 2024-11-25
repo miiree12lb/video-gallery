@@ -18,13 +18,18 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
     }
 
     return (
-        <div className="video-container">
+        <div className="video-container"
+            style={{
+                width,
+                height
+            }}
+        >
             {!isPlaying ? (
                 <div
                     className="thumbnail-overlay"
                     style={{
-                        width,
-                        height,
+                        width: "100%",
+                        height: "100%",
                         position: "relative",
                         cursor: "pointer",
                         display: "flex",
@@ -47,14 +52,13 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
                     style={{
                         top: 0,
                         left: 0,
-                        width,
-                        height,
+                        width:"100%",
+                        height: "100%",
                         border: "none",
                         borderRadius: "5px",
                     }}
                     allow="autoplay; encrypted-media"
                     allowFullScreen
-                    allowfullscreen="true"
                     title={title}
                 ></iframe>
 

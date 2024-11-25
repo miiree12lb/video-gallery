@@ -6,6 +6,11 @@
     margin-bottom: 20px;
 }
 
+.video-container {
+    border-radius: 5px;
+    border: solid 1px #292929;
+}
+
 .videos-container {
     display: flex;
     flex-direction: row;

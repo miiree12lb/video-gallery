@@ -7,7 +7,7 @@ import './css/navbar.css';
 import logo from "./assets/images/logo.png";
 
 function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQuery }) {
-    const isDesktop = useMediaQuery({ query: "(min-width: 701px)" });
+    const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
     const [isOpen, setIsOpen] = useState(false);
     const [showLeftNav, setShowLeftNav] = useState(true);
     const [showSearchBar, setShowSearchBar] = useState(true);
@@ -70,7 +70,7 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
 
                     <div className="dropdown" ref={dropdownRef}>
                         <button id="category" onClick={toggleIcon}>
-                            Category: {selectedCategory}
+                            {selectedCategory === 'All' ? "Category" : selectedCategory}
                             <i
                                 id="caret"
                                 className={`fa ${isOpen ? "fa-caret-up" : "fa-caret-down"}`}
