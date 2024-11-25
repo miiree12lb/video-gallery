@@ -57,7 +57,7 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
                         border: "none",
                         borderRadius: "5px",
                     }}
-                    allow="autoplay; encrypted-media"
+                    allow="autoplay; encrypted-media;"
                     allowFullScreen
                     title={title}
                 ></iframe>

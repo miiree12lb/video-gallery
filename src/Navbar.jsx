@@ -69,8 +69,10 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                     </div>
 
                     <div className="dropdown" ref={dropdownRef}>
-                        <button id="category" onClick={toggleIcon}>
-                            {selectedCategory === 'All' ? "Category" : selectedCategory}
+                        <button id="category" onClick={toggleIcon} style={{
+                            borderBottom: selectedCategory !== "All" ? "solid 1px #94692D" : "none"
+                        }}>
+                            {selectedCategory === 'All' ? "Categories" : selectedCategory}
                             <i
                                 id="caret"
                                 className={`fa ${isOpen ? "fa-caret-up" : "fa-caret-down"}`}
@@ -108,8 +110,8 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                     />
                 )}
 
-                <button className="search-button" onClick={handleShowSearchBar}>
-                    <i id="search" className="fa fa-search"></i>
+                <button className={`search-button${showSearchBar ? "" : "-big"}`} onClick={handleShowSearchBar}>
+                    <i id={`search${showSearchBar ? "" : "-big"}`} className="fa fa-search"></i>
                 </button>
             </div>
         </div>
