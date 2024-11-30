@@ -68,9 +68,9 @@ label > span {
 }
 .chip img {
     float: left;
-    margin: 0 10px 0 -25px;
-    height: 50px;
-    width: 50px;
+    margin: -10px 10px 0 -35px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
 }
 .chip, #category, label {
@@ -116,7 +116,7 @@ input[type="text"] {
 
 @media screen and (max-width: 800px) {
     input[type="text"] {
-        width: 80vw;
+        width: 70vw;
     }
 }
 
