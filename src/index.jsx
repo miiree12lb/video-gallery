@@ -10,6 +10,7 @@ import Nabvar from "./Navbar.jsx";
 
 import wisconsinThumb from "./assets/thumbnails/wisconsinThumb.png";
 import londonThumb from "./assets/thumbnails/londonThumb.png";
+import thumb2024 from "./assets/thumbnails/2024Thumb.png";
 
 function Root() {
     const viewRef = useRef(null);
@@ -19,15 +20,25 @@ function Root() {
     const [currentVideoId, setCurrentVideoId] = useState(null);
 
     const [travelVideos, setTravelVideos] = useState([]);
+    const [recapVideos, setRecapVideos] = useState([]);
+
+    const video2024 = {videoUrl:"https://drive.google.com/file/d/14uKQ0Nq3MBlLWa8zzSmk5BSUv9N0VmyQ/preview", vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024}
 
     const initialTravelVideos = [
         { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
         { videoUrl: "https://drive.google.com/file/d/1K-53KMVX9t_6k7_impheHPYGNb1K2jjO/preview", vertical: true, title: "London", thumbnail: londonThumb},
+        video2024,
     ];
+
+    const initialRecapVideos = [
+        video2024,
+    ]
+
 
     useEffect(() => {
         const assignVideoIds = (videos) => videos.map((video) => ({ ...video, id: uuidv4() }));
         setTravelVideos(assignVideoIds(initialTravelVideos));
+        setRecapVideos(assignVideoIds(initialRecapVideos));
     }, []);
 
     useEffect(() => {
@@ -62,6 +73,17 @@ function Root() {
                         <h2>Travel</h2>
                         <VideoSlider
                             videoList={filterVideos(travelVideos)}
+                            currentVideoId={currentVideoId}
+                            setCurrentVideoId={setCurrentVideoId}
+                        />
+                    </div>
+                )}
+
+                {(selectedCategory === "All" || selectedCategory === "Year Recap") && (
+                    <div>
+                        <h2>Year Recap</h2>
+                        <VideoSlider
+                            videoList={filterVideos(recapVideos)}
                             currentVideoId={currentVideoId}
                             setCurrentVideoId={setCurrentVideoId}
                         />
