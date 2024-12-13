@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import DriveVideoEmbed from "./DriveVideoEmbed.jsx";
 import { useMediaQuery } from "react-responsive";
 
 function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
-    const visibleVideos = isDesktop ? 4 : 2;
+    const vertical = videoList[0]?.vertical || false;
     const [initialId, setInitialId] = useState(0);
+    const visibleVideos = isDesktop ? (vertical ? 4 : 2) : (vertical ? 2 : 1);
 
     function assignListIds(videos) {
         return videos.map((video, listId) => ({ ...video, listId }));
@@ -66,7 +67,7 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
                     </button>
                 )}
 
-                <div className="videos-container">
+                <div className={`videos-container ${vertical ? "" : "horizontal"}`}>
                     {displayVideos.map((video) => (
                         <div key={video.id} className="video-item">
                             <DriveVideoEmbed
@@ -106,4 +107,3 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
 }
 
 export default VideoSlider;
-

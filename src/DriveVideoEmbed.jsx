@@ -13,8 +13,8 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
         width = isDesktop ? "15vw" : "30vw";
         height = `${(parseFloat(width) * 16) / 9}vw`;
     } else {
-        height = "15vw";
-        width = "26.6666666666vw";
+        height = isDesktop ? "20vw" : "35vw";
+        width = `${(parseFloat(height) * 16) / 9}vw`;
     }
 
     return (

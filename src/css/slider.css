@@ -20,6 +20,15 @@
     columns: 4;
 }
 
+.videos-container.horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    overflow: hidden;
+    columns: 2;
+}
+
 .arrows {
     background-color: #151515;
     color: #94692D;
@@ -71,5 +80,9 @@ h3, p {
 @media screen and (max-width: 800px) {
     .videos-container {
         columns: 2;
+    }
+
+    .videos-container.horizontal {
+        columns: 1;
     }
 }

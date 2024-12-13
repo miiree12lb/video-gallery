@@ -114,6 +114,10 @@ input[type="text"] {
     font-size: 20px;
 }
 
+label {
+    padding: 10px 0;
+}
+
 @media screen and (max-width: 800px) {
     input[type="text"] {
         width: 70vw;
@@ -123,9 +127,6 @@ input[type="text"] {
 @media screen and (max-width: 500px) {
     .chip, #category, label {
         font-size: 3vw;
-    }
-    label {
-        padding: 10px 0;
     }
     .nav-bar-left {
         gap: 10px
