@@ -11,6 +11,7 @@ import Nabvar from "./Navbar.jsx";
 import wisconsinThumb from "./assets/thumbnails/wisconsinThumb.png";
 import londonThumb from "./assets/thumbnails/londonThumb.png";
 import thumb2024 from "./assets/thumbnails/2024Thumb.png";
+import menuMentorThumb from "./assets/thumbnails/MenuMentorThumb.png";
 
 function Root() {
     const viewRef = useRef(null);
@@ -21,8 +22,10 @@ function Root() {
 
     const [travelVideos, setTravelVideos] = useState([]);
     const [recapVideos, setRecapVideos] = useState([]);
+    const [softwarePromoVideos, setSoftwarePromoVideos] = useState([]);
 
-    const video2024 = {videoUrl:"https://drive.google.com/file/d/14uKQ0Nq3MBlLWa8zzSmk5BSUv9N0VmyQ/preview", vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024}
+    const video2024 = {videoUrl:"https://drive.google.com/file/d/14uKQ0Nq3MBlLWa8zzSmk5BSUv9N0VmyQ/preview", vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024};
+    const videoMenu = {videoUrl: "https://drive.google.com/file/d/1t5o0a813PEGNkQIZODBMwaUzxciKhZDD/preview", vertical: false, title: "MenuMentor", thumbnail: menuMentorThumb};
 
     const initialTravelVideos = [
         { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
@@ -34,11 +37,16 @@ function Root() {
         video2024,
     ]
 
+    const initialSoftwarePromoVideos = [
+        videoMenu
+    ]
+
 
     useEffect(() => {
         const assignVideoIds = (videos) => videos.map((video) => ({ ...video, id: uuidv4() }));
         setTravelVideos(assignVideoIds(initialTravelVideos));
         setRecapVideos(assignVideoIds(initialRecapVideos));
+        setSoftwarePromoVideos(assignVideoIds(initialSoftwarePromoVideos));
     }, []);
 
     useEffect(() => {
@@ -73,6 +81,17 @@ function Root() {
                         <h2>Travel</h2>
                         <VideoSlider
                             videoList={filterVideos(travelVideos)}
+                            currentVideoId={currentVideoId}
+                            setCurrentVideoId={setCurrentVideoId}
+                        />
+                    </div>
+                )}
+
+                {(selectedCategory === "All" || selectedCategory === "Software Promo") && (
+                    <div>
+                        <h2>Software Promo</h2>
+                        <VideoSlider
+                            videoList={filterVideos(softwarePromoVideos)}
                             currentVideoId={currentVideoId}
                             setCurrentVideoId={setCurrentVideoId}
                         />
