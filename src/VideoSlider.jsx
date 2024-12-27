@@ -62,7 +62,7 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
         <div className="video-slider">
             <div className="arrows-videos-container">
                 {videoList.length > visibleVideos && (
-                    <button className="arrows" onClick={handlePrev}>
+                    <button className="arrows" id="prev" onClick={handlePrev}>
                         &#10094;
                     </button>
                 )}
@@ -87,7 +87,7 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
                 </div>
 
                 {videoList.length > visibleVideos && (
-                    <button className="arrows" onClick={handleNext}>
+                    <button className="arrows" id="next" onClick={handleNext}>
                         &#10095;
                     </button>
                 )}
