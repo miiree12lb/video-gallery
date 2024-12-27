@@ -131,4 +131,26 @@ label {
     .nav-bar-left {
         gap: 10px
     }
+
+    #category {
+        display: flex;
+        align-items: center; /* Vertically align text and icon */
+        justify-content: space-between; /* Space between text and caret */
+        padding: 5px 10px;
+        max-width: 100px; /* Adjust this width as needed */
+        overflow: hidden;
+    }
+
+    #category span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-grow: 1;
+    }
+
+    #caret {
+        flex-shrink: 0;
+        padding-left: 10px;
+    }
+
 }

@@ -72,7 +72,7 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                         <button id="category" onClick={toggleIcon} style={{
                             borderBottom: selectedCategory !== "All" ? "solid 1px #94692D" : "none"
                         }}>
-                            {selectedCategory === 'All' ? "Categories" : selectedCategory}
+                            <span>{selectedCategory === 'All' ? "Categories" : selectedCategory}</span>
                             <i
                                 id="caret"
                                 className={`fa ${isOpen ? "fa-caret-up" : "fa-caret-down"}`}
