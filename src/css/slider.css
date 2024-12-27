@@ -80,9 +80,11 @@ h3, p {
 @media screen and (max-width: 800px) {
     .videos-container {
         columns: 2;
+        gap: 10px;
     }
 
     .videos-container.horizontal {
         columns: 1;
+        gap: 10px;
     }
 }
