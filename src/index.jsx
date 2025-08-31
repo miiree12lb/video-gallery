@@ -13,6 +13,7 @@ import londonThumb from "./assets/thumbnails/londonThumb.png";
 import thumb2024 from "./assets/thumbnails/2024Thumb.png";
 import menuMentorThumb from "./assets/thumbnails/MenuMentorThumb.png";
 import diy66Thumb from "./assets/thumbnails/diy66Thumb.png";
+import interrailThumb from "./assets/thumbnails/interrail.png";
 
 function Root() {
     const viewRef = useRef(null);
@@ -28,11 +29,13 @@ function Root() {
 
     const video2024 = {videoUrl:"https://drive.google.com/file/d/14uKQ0Nq3MBlLWa8zzSmk5BSUv9N0VmyQ/preview", vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024};
     const videoMenu = {videoUrl: "https://drive.google.com/file/d/1t5o0a813PEGNkQIZODBMwaUzxciKhZDD/preview", vertical: false, title: "MenuMentor", thumbnail: menuMentorThumb};
+    const videoInterrail = {videoUrl: "https://drive.google.com/file/d/1uJKRYwIljFQI15nSXulzhGS_1jLb6Snj/preview", vertical: true, title: "Interrail", subtitle: "Summer '25", thumbnail: interrailThumb}
 
     const initialTravelVideos = [
         { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
         { videoUrl: "https://drive.google.com/file/d/1K-53KMVX9t_6k7_impheHPYGNb1K2jjO/preview", vertical: true, title: "London", thumbnail: londonThumb},
         video2024,
+        videoInterrail
     ];
 
     const initialRecapVideos = [
