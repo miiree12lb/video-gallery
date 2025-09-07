@@ -32,10 +32,10 @@ function Root() {
     const videoInterrail = {videoUrl: "https://drive.google.com/file/d/1uJKRYwIljFQI15nSXulzhGS_1jLb6Snj/preview", vertical: true, title: "Interrail", subtitle: "Summer '25", thumbnail: interrailThumb}
 
     const initialTravelVideos = [
-        { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
-        { videoUrl: "https://drive.google.com/file/d/1K-53KMVX9t_6k7_impheHPYGNb1K2jjO/preview", vertical: true, title: "London", thumbnail: londonThumb},
+        videoInterrail,
         video2024,
-        videoInterrail
+        { videoUrl: "https://drive.google.com/file/d/1K-53KMVX9t_6k7_impheHPYGNb1K2jjO/preview", vertical: true, title: "London", thumbnail: londonThumb},
+        { videoUrl: "https://drive.google.com/file/d/1MF9pskvYNstpLSs_vHGEpdLKcZDiAxYS/preview", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb},
     ];
 
     const initialRecapVideos = [
