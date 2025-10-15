@@ -35,12 +35,9 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
 
     const handleVideoPlay = (videoId) => {
         if (currentVideoId && currentVideoId !== videoId) {
-            const currentIframe = document.getElementById(`iframe-${currentVideoId}`);
-            if (currentIframe) {
-                currentIframe.contentWindow.postMessage(
-                    '{"event":"command","func":"pauseVideo","args":""}',
-                    "*"
-                );
+            const currentVideo = document.getElementById(`iframe-${currentVideoId}`);
+            if (currentVideo && typeof currentVideo.pause === "function") {
+                currentVideo.pause();
             }
         }
 
@@ -80,8 +77,12 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
                                 onPlay={handleVideoPlay}
                                 thumbnail={video.thumbnail}
                             />
-                            <h3>{video.title}</h3>
-                            <p>{video.subtitle}</p>
+                            <div
+                                style={{maxWidth: video.vertical ? (isDesktop ? "15vw" : "30vw") : (isDesktop ? `${(20 * 16) / 9}vw` : `${(35 * 16) / 9}vw`)}}
+                            >
+                                <h3>{video.title}</h3>
+                                <p>{video.subtitle}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
