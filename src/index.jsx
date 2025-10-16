@@ -18,6 +18,7 @@ import montainsThumb from "./assets/thumbnails/mountainsThumbs.png";
 import footballStadiumsThumb from "./assets/thumbnails/footballStadiumsThmb.png";
 import colorPaletteGeneratorThumb from "./assets/thumbnails/colorPaletteGeneratorThumb.png";
 import yaya80Thumb from "./assets/thumbnails/yaya80Thumb.JPG";
+import reactHowToThumb from "./assets/thumbnails/reactHowToThumb.png";
 
 import wisconsinVideo from "./assets/videos/Wisconsin_ Summer '24.mp4";
 import londonVideo from "./assets/videos/London.mp4";
@@ -30,6 +31,7 @@ import mountainsVideo from "./assets/videos/Mountains.mp4";
 import footballStadiumsVideo from "./assets/videos/Football Stadiums.mp4";
 import colorPaletteGeneratorVideo from "./assets/videos/Color Palette Generator.mp4";
 import yaya80Video from "./assets/videos/Yaya 80.mp4";
+import reactHowToVideo from "./assets/videos/React How To.mp4";
 
 function Root() {
     const viewRef = useRef(null);
@@ -68,6 +70,7 @@ function Root() {
     ];
 
     const initialSoftwarePromoVideos = [
+        {videoUrl: reactHowToVideo, vertical: false, title: "React How To", thumbnail: reactHowToThumb},
         {videoUrl: colorPaletteGeneratorVideo, vertical: false, title: "Color Palette Generator", thumbnail: colorPaletteGeneratorThumb},
         videoMenu
     ];
