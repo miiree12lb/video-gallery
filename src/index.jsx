@@ -19,6 +19,7 @@ import footballStadiumsThumb from "./assets/thumbnails/footballStadiumsThmb.png"
 import colorPaletteGeneratorThumb from "./assets/thumbnails/colorPaletteGeneratorThumb.png";
 import yaya80Thumb from "./assets/thumbnails/yaya80Thumb.JPG";
 import reactHowToThumb from "./assets/thumbnails/reactHowToThumb.png";
+import musicPlayerThumb from "./assets/thumbnails/musicPlayerThumb.png";
 
 import wisconsinVideo from "./assets/videos/Wisconsin_ Summer '24.mp4";
 import londonVideo from "./assets/videos/London.mp4";
@@ -32,6 +33,7 @@ import footballStadiumsVideo from "./assets/videos/Football Stadiums.mp4";
 import colorPaletteGeneratorVideo from "./assets/videos/Color Palette Generator.mp4";
 import yaya80Video from "./assets/videos/Yaya 80.mp4";
 import reactHowToVideo from "./assets/videos/React How To.mp4";
+import musicPlayerVideo from "./assets/videos/Music Player.mp4";
 
 function Root() {
     const viewRef = useRef(null);
@@ -46,11 +48,13 @@ function Root() {
     const [diyVideos, setDiyVideos] = useState([]);
     const [photoAndVideoSelection, setPhotoAndVideoSelection] = useState([]);
     const [celebrationsVideos, setCelebrationsVideos] = useState([]);
+    const [codingVideos, setCodingVideos] = useState([]);
 
     const video2024 = {videoUrl:video2024mp4, vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024};
     const videoMenu = {videoUrl: menuMentorVideo, vertical: false, title: "MenuMentor", thumbnail: menuMentorThumb};
     const videoInterrail = {videoUrl: interrailVideo, vertical: true, title: "Interrail", subtitle: "Summer '25", thumbnail: interrailThumb};
-    const videoPrettySkies = {videoUrl: prettySkiesVideo, vertical: true, title: "Pretty Skies", thumbnail: prettySkiesThumb}
+    const videoPrettySkies = {videoUrl: prettySkiesVideo, vertical: true, title: "Pretty Skies", thumbnail: prettySkiesThumb};
+    const videoMusicPlayer = {videoUrl: musicPlayerVideo, vertical: true, title: "Music Player", subtitle: "with React", thumbnail: musicPlayerThumb};
 
     const initialTravelVideos = [
         videoInterrail,
@@ -76,8 +80,13 @@ function Root() {
     ];
 
     const initialDiyVideos = [
+        videoMusicPlayer,
         {videoUrl: diy66Video, vertical: true, title: "Route 66", subtitle: "", thumbnail: diy66Thumb}
     ];
+
+    const initialCodingVideos = [
+        videoMusicPlayer
+    ]
 
     const initialCelebrationsVideos = [
         {videoUrl: yaya80Video, vertical: true, title: "Yaya 80", thumbnail: yaya80Thumb}
@@ -91,6 +100,7 @@ function Root() {
         setDiyVideos(assignVideoIds(initialDiyVideos));
         setPhotoAndVideoSelection(assignVideoIds(initialPhotoAndVideoSelection));
         setCelebrationsVideos(assignVideoIds(initialCelebrationsVideos));
+        setCodingVideos(assignVideoIds(initialCodingVideos));
     }, []);
 
     useEffect(() => {
@@ -136,6 +146,17 @@ function Root() {
                         <h2>Year Recap</h2>
                         <VideoSlider
                             videoList={filterVideos(recapVideos)}
+                            currentVideoId={currentVideoId}
+                            setCurrentVideoId={setCurrentVideoId}
+                        />
+                    </div>
+                )}
+
+                {(selectedCategory === "All" || selectedCategory === "Coding") && (
+                    <div>
+                        <h2>Coding</h2>
+                        <VideoSlider
+                            videoList={filterVideos(codingVideos)}
                             currentVideoId={currentVideoId}
                             setCurrentVideoId={setCurrentVideoId}
                         />

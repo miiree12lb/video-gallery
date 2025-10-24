@@ -34,7 +34,9 @@
     color: #94692D;
     border: none;
     cursor: pointer;
-    font-size: 5vw;
+    font-size: 2vw;
+    padding: 0;
+    margin: 0;
 }
 
 .arrows:hover{
@@ -90,8 +92,6 @@ h3, p {
 
     .arrows {
         font-size: 3vw;
-        padding: 0;
-        margin: 0;
     }
 
     #prev {
