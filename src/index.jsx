@@ -20,6 +20,8 @@ import colorPaletteGeneratorThumb from "./assets/thumbnails/colorPaletteGenerato
 import yaya80Thumb from "./assets/thumbnails/yaya80Thumb.JPG";
 import reactHowToThumb from "./assets/thumbnails/reactHowToThumb.png";
 import musicPlayerThumb from "./assets/thumbnails/musicPlayerThumb.png";
+import parallaxEffectThumb from "./assets/thumbnails/parallaxThumb.png";
+import waveRepresentationThumb from "./assets/thumbnails/waveRepresentationThumb.png";
 
 import wisconsinVideo from "./assets/videos/Wisconsin_ Summer '24.mp4";
 import londonVideo from "./assets/videos/London.mp4";
@@ -34,6 +36,8 @@ import colorPaletteGeneratorVideo from "./assets/videos/Color Palette Generator.
 import yaya80Video from "./assets/videos/Yaya 80.mp4";
 import reactHowToVideo from "./assets/videos/React How To.mp4";
 import musicPlayerVideo from "./assets/videos/Music Player.mp4";
+import parallaxEffectVideo from "./assets/videos/Parallax Effect.mp4";
+import waveRepresentationVideo from "./assets/videos/Wave Representation.mp4";
 
 function Root() {
     const viewRef = useRef(null);
@@ -55,6 +59,8 @@ function Root() {
     const videoInterrail = {videoUrl: interrailVideo, vertical: true, title: "Interrail", subtitle: "Summer '25", thumbnail: interrailThumb};
     const videoPrettySkies = {videoUrl: prettySkiesVideo, vertical: true, title: "Pretty Skies", thumbnail: prettySkiesThumb};
     const videoMusicPlayer = {videoUrl: musicPlayerVideo, vertical: true, title: "Music Player", subtitle: "with React", thumbnail: musicPlayerThumb};
+    const videoParallax = {videoUrl: parallaxEffectVideo, vertical: true, title: "Parallax Effect", subtitle: "with React", thumbnail: parallaxEffectThumb};
+    const videoWave = {videoUrl: waveRepresentationVideo, vertical: true, title: "Wave Representation", subtitle: "with React", thumbnail: waveRepresentationThumb};
 
     const initialTravelVideos = [
         videoInterrail,
@@ -80,11 +86,15 @@ function Root() {
     ];
 
     const initialDiyVideos = [
+        videoWave,
+        videoParallax,
         videoMusicPlayer,
         {videoUrl: diy66Video, vertical: true, title: "Route 66", subtitle: "", thumbnail: diy66Thumb}
     ];
 
     const initialCodingVideos = [
+        videoWave,
+        videoParallax,
         videoMusicPlayer
     ]
 
