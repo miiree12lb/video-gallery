@@ -47,6 +47,7 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
                         position: "relative",
                         cursor: "pointer",
                         display: "flex",
+                        flexDirection: "column",
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: thumbnail ? "transparent" : "#292929",
@@ -57,6 +58,8 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
                     }}
                     onClick={() => handlePlay(videoId)}
                 >
+                    {!thumbnail && <h4>{title}</h4>}
+                    {!thumbnail && <p>{subtitle}</p>}
                 </div>
             ) : (
                 <video

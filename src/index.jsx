@@ -22,6 +22,7 @@ import reactHowToThumb from "./assets/thumbnails/reactHowToThumb.png";
 import musicPlayerThumb from "./assets/thumbnails/musicPlayerThumb.png";
 import parallaxEffectThumb from "./assets/thumbnails/parallaxThumb.png";
 import waveRepresentationThumb from "./assets/thumbnails/waveRepresentationThumb.png";
+import mathsFunctionsViewerThumb from "./assets/thumbnails/mathsViewerThumb.png";
 
 import wisconsinVideo from "./assets/videos/Wisconsin_ Summer '24.mp4";
 import londonVideo from "./assets/videos/London.mp4";
@@ -38,6 +39,7 @@ import reactHowToVideo from "./assets/videos/React How To.mp4";
 import musicPlayerVideo from "./assets/videos/Music Player.mp4";
 import parallaxEffectVideo from "./assets/videos/Parallax Effect.mp4";
 import waveRepresentationVideo from "./assets/videos/Wave Representation.mp4";
+import mathsFunctionsViewerVideo from "./assets/videos/Maths Viewer.mp4";
 
 function Root() {
     const viewRef = useRef(null);
@@ -86,13 +88,12 @@ function Root() {
     ];
 
     const initialDiyVideos = [
-        videoWave,
-        videoParallax,
         videoMusicPlayer,
         {videoUrl: diy66Video, vertical: true, title: "Route 66", subtitle: "", thumbnail: diy66Thumb}
     ];
 
     const initialCodingVideos = [
+        {videoUrl: mathsFunctionsViewerVideo, title: "Maths Viewer", vertical: true, thumbnail: mathsFunctionsViewerThumb},
         videoWave,
         videoParallax,
         videoMusicPlayer
