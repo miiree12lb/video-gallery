@@ -46,7 +46,16 @@ function Root() {
     const navigate = useNavigate();
     const location = useLocation();
     const viewRef = useRef(null);
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([
+        "All",
+        "Travel",
+        "Year Recap",
+        "Coding",
+        "Photo & Video Selection",
+        "DIY",
+        "Celebrations",
+        "Software Promo"
+    ]);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
     const [currentVideoId, setCurrentVideoId] = useState(null);
@@ -146,13 +155,13 @@ function Root() {
                     path="/"
                     element={
                         <div id="view" ref={viewRef}>
-                            <Section title="Travel" videos={filterVideos(travelVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/travel")} />
-                            <Section title="Year Recap" videos={filterVideos(recapVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/year-recap")} />
-                            <Section title="Coding" videos={filterVideos(codingVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/coding")} />
-                            <Section title="Photo & Video Selection" videos={filterVideos(photoAndVideoSelection)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/photo-video")} />
-                            <Section title="DIY" videos={filterVideos(diyVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/diy")} />
-                            <Section title="Celebrations" videos={filterVideos(celebrationsVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/celebrations")} />
-                            <Section title="Software Promo" videos={filterVideos(softwarePromoVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/software-promo")} />
+                            <Section title="Travel" videos={filterVideos(travelVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/travel")} selectedCategory={selectedCategory} />
+                            <Section title="Year Recap" videos={filterVideos(recapVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/year-recap")} selectedCategory={selectedCategory} />
+                            <Section title="Coding" videos={filterVideos(codingVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/coding")} selectedCategory={selectedCategory} />
+                            <Section title="Photo & Video Selection" videos={filterVideos(photoAndVideoSelection)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/photo-video")} selectedCategory={selectedCategory} />
+                            <Section title="DIY" videos={filterVideos(diyVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/diy")} selectedCategory={selectedCategory} />
+                            <Section title="Celebrations" videos={filterVideos(celebrationsVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/celebrations")} selectedCategory={selectedCategory} />
+                            <Section title="Software Promo" videos={filterVideos(softwarePromoVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/software-promo")} selectedCategory={selectedCategory} />
                         </div>
                     }
                 />
@@ -173,7 +182,9 @@ function Root() {
     );
 }
 
-function Section({ title, videos, currentVideoId, setCurrentVideoId, onViewAll }) {
+function Section({ title, videos, currentVideoId, setCurrentVideoId, onViewAll, selectedCategory }) {
+    if (selectedCategory !== "All" && selectedCategory !== title) return;
+    
     return (
         <div>
             <div className="header">

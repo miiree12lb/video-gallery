@@ -33,7 +33,7 @@ function ViewAll({ title, verticalVideoList, horizontalVideoList, currentVideoId
     return (
         <div className="view-all-container">
             <div className="view-all-title">
-                <h1 onClick={() => navigate("/")}>&#10094;</h1>
+                <h1 className="view-all-arrow" onClick={() => navigate("/")}>&#10094;</h1>
                 <h1>{title}</h1>
             </div>
 
