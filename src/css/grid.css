@@ -11,3 +11,13 @@
     gap: 20px;
     justify-items: center;
 }
+
+@media screen and (max-width: 800px) {
+    .vertical-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .horizontal-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
