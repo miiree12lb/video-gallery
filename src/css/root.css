@@ -31,3 +31,27 @@ h1, h2 {
 #view {
     padding-top: 100px;
 }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-all {
+    cursor: pointer;
+}
+
+.view-all:hover {
+    color:#94692d;
+}
+
+.view-all-title {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    gap: 20px
+}
+
+.view-all-container {
+    margin-bottom: 20px;
+}
