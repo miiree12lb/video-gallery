@@ -4,7 +4,7 @@ import DriveVideoEmbed from "./DriveVideoEmbed.jsx";
 import { useMediaQuery } from "react-responsive";
 import "./css/grid.css"
 
-function ViewAll({ title, verticalVideoList, horizontalVideoList, currentVideoId, setCurrentVideoId }) {
+function ViewAll({ title, videos, currentVideoId, setCurrentVideoId }) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
     const [initialId, setInitialId] = useState(0);
     const navigate = useNavigate();
@@ -13,11 +13,8 @@ function ViewAll({ title, verticalVideoList, horizontalVideoList, currentVideoId
         return videos.map((video, listId) => ({ ...video, listId }));
     }
 
-    if (verticalVideoList)
-        verticalVideoList = assignListIds(verticalVideoList);
-
-    if (horizontalVideoList)
-        horizontalVideoList = assignListIds(horizontalVideoList);
+    const verticalVideoList = videos.filter((v) => v.vertical === true);
+    const horizontalVideoList = videos.filter((v) => v.vertical === false);
 
     const handleVideoPlay = (videoId) => {
         if (currentVideoId && currentVideoId !== videoId) {

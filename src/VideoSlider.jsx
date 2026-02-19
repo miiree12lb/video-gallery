@@ -48,11 +48,7 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
         console.error("Invalid or empty videoList:", videoList);
         return null;
     }
-
-    if (videoList.length === 0) {
-        return <p className="no-videos-message">No videos match your search.</p>;
-    }
-
+    
     const displayVideos = getDisplayVideos(initialId);
 
     return (

@@ -24,6 +24,12 @@ import musicPlayerThumb from "./assets/thumbnails/musicPlayerThumb.png";
 import parallaxEffectThumb from "./assets/thumbnails/parallaxThumb.png";
 import waveRepresentationThumb from "./assets/thumbnails/waveRepresentationThumb.png";
 import mathsFunctionsViewerThumb from "./assets/thumbnails/mathsViewerThumb.jpg";
+import recap2025Thumb from "./assets/thumbnails/2025Thumb.png";
+import copenhagenThumb from "./assets/thumbnails/copenhagenThumb.jpg";
+import visitedCountriesThumb from "./assets/thumbnails/visitedCountriesThumb.png";
+import loadingThumb from "./assets/thumbnails/loadingThumb.png";
+import introThumb from "./assets/thumbnails/introThumb.png";
+import orbitThumb from "./assets/thumbnails/orbitThumb.png";
 
 import wisconsinVideo from "./assets/videos/Wisconsin_ Summer '24.mp4";
 import londonVideo from "./assets/videos/London.mp4";
@@ -41,6 +47,12 @@ import musicPlayerVideo from "./assets/videos/Music Player.mp4";
 import parallaxEffectVideo from "./assets/videos/Parallax Effect.mp4";
 import waveRepresentationVideo from "./assets/videos/Wave Representation.mp4";
 import mathsFunctionsViewerVideo from "./assets/videos/Maths Viewer.mp4";
+import recap2025video from "./assets/videos/2025.mp4";
+import copenhagen from "./assets/videos/copenhagen.mp4";
+import visitedCountries from "./assets/videos/visited countries.mp4";
+import loading from "./assets/videos/loading.mp4";
+import intro from "./assets/videos/intro.mp4";
+import orbit from "./assets/videos/orbit.mp4";
 
 function Root() {
     const navigate = useNavigate();
@@ -49,8 +61,10 @@ function Root() {
     const [categories, setCategories] = useState([
         "All",
         "Travel",
+        "En Català",
         "Year Recap",
         "Coding",
+        "Animations",
         "Photo & Video Selection",
         "DIY",
         "Celebrations",
@@ -60,6 +74,7 @@ function Root() {
     const [searchQuery, setSearchQuery] = useState("");
     const [currentVideoId, setCurrentVideoId] = useState(null);
 
+    const [catalaVideos, setCatalaVideos] = useState([]);
     const [travelVideos, setTravelVideos] = useState([]);
     const [recapVideos, setRecapVideos] = useState([]);
     const [softwarePromoVideos, setSoftwarePromoVideos] = useState([]);
@@ -67,6 +82,7 @@ function Root() {
     const [photoAndVideoSelection, setPhotoAndVideoSelection] = useState([]);
     const [celebrationsVideos, setCelebrationsVideos] = useState([]);
     const [codingVideos, setCodingVideos] = useState([]);
+    const [animationVideos, setAnimationVideos] = useState([]);
 
     const video2024 = { videoUrl: video2024mp4, vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024 };
     const videoMenu = { videoUrl: menuMentorVideo, vertical: false, title: "MenuMentor", thumbnail: menuMentorThumb };
@@ -75,8 +91,22 @@ function Root() {
     const videoMusicPlayer = { videoUrl: musicPlayerVideo, vertical: true, title: "Music Player", subtitle: "with React", thumbnail: musicPlayerThumb };
     const videoParallax = { videoUrl: parallaxEffectVideo, vertical: true, title: "Parallax Effect", subtitle: "with React", thumbnail: parallaxEffectThumb };
     const videoWave = { videoUrl: waveRepresentationVideo, vertical: true, title: "Wave Representation", subtitle: "with React", thumbnail: waveRepresentationThumb };
+    const video2025 = {videoUrl: recap2025video, vertical: true, title: "2025", thumbnail: recap2025Thumb};
+
+    const initialCatalaVideos = [
+        video2025,
+        videoPrettySkies
+    ];
+
+    const initialAnimationVideos = [
+        {videoUrl: orbit, vertical: false, title: "Orbit", thumbnail: orbitThumb},
+        {videoUrl: intro, vertical: false, title: "Intro", thumbnail: introThumb},
+        {videoUrl: loading, vertical: false, title: "Loading", thumbnail: loadingThumb}
+    ];
 
     const initialTravelVideos = [
+        {videoUrl: visitedCountries, vertical: true, title: "Visited Countries", subtitle: "15/02/2026", thumbnail: visitedCountriesThumb},
+        { videoUrl: copenhagen, vertical: true, title: "Copenhagen", thumbnail: copenhagenThumb },
         videoInterrail,
         video2024,
         { videoUrl: londonVideo, vertical: true, title: "London", thumbnail: londonThumb },
@@ -89,7 +119,10 @@ function Root() {
         { videoUrl: mountainsVideo, vertical: true, title: "Mountains", thumbnail: montainsThumb }
     ];
 
-    const initialRecapVideos = [video2024];
+    const initialRecapVideos = [
+        video2025,
+        video2024
+    ];
 
     const initialSoftwarePromoVideos = [
         { videoUrl: reactHowToVideo, vertical: false, title: "React How To", thumbnail: reactHowToThumb },
@@ -115,6 +148,8 @@ function Root() {
 
     useEffect(() => {
         const assignVideoIds = (videos) => videos.map((video) => ({ ...video, id: uuidv4() }));
+        setAnimationVideos(assignVideoIds(initialAnimationVideos));
+        setCatalaVideos(assignVideoIds(initialCatalaVideos));
         setTravelVideos(assignVideoIds(initialTravelVideos));
         setRecapVideos(assignVideoIds(initialRecapVideos));
         setSoftwarePromoVideos(assignVideoIds(initialSoftwarePromoVideos));
@@ -139,6 +174,18 @@ function Root() {
 
     const isHomePage = location.pathname === "/";
 
+    const sections = [
+        {title: "Travel", videos: travelVideos, link: "/travel"},
+        {title: "En Català", videos: catalaVideos, link: "/catala"},
+        {title: "Year Recap", videos: recapVideos, link: "/year-recap"},
+        {title: "Coding", videos: codingVideos, link: "/coding"},
+        {title: "Animations", videos: animationVideos, link: "/animations"},
+        {title: "Photo & Video Selection", videos: photoAndVideoSelection, link: "/photo-video"},
+        {title: "DIY", videos: diyVideos, link: "/diy"},
+        {title: "Celebrations", videos: celebrationsVideos, link: "/celebrations"},
+        {title: "Software Promo", videos: softwarePromoVideos, link: "/software-promo"},
+    ];
+
     return (
         <>
             {isHomePage && (
@@ -155,24 +202,16 @@ function Root() {
                     path="/"
                     element={
                         <div id="view" ref={viewRef}>
-                            <Section title="Travel" videos={filterVideos(travelVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/travel")} selectedCategory={selectedCategory} />
-                            <Section title="Year Recap" videos={filterVideos(recapVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/year-recap")} selectedCategory={selectedCategory} />
-                            <Section title="Coding" videos={filterVideos(codingVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/coding")} selectedCategory={selectedCategory} />
-                            <Section title="Photo & Video Selection" videos={filterVideos(photoAndVideoSelection)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/photo-video")} selectedCategory={selectedCategory} />
-                            <Section title="DIY" videos={filterVideos(diyVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/diy")} selectedCategory={selectedCategory} />
-                            <Section title="Celebrations" videos={filterVideos(celebrationsVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/celebrations")} selectedCategory={selectedCategory} />
-                            <Section title="Software Promo" videos={filterVideos(softwarePromoVideos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll("/software-promo")} selectedCategory={selectedCategory} />
+                            {sections.map((s) => (
+                                <Section title={s.title} videos={filterVideos(s.videos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll(s.link)} selectedCategory={selectedCategory} />
+                            ))}
                         </div>
                     }
                 />
 
-                <Route path="/travel" element={<ViewAll title="Travel" verticalVideoList={travelVideos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
-                <Route path="/year-recap" element={<ViewAll title="Year Recap" verticalVideoList={recapVideos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
-                <Route path="/coding" element={<ViewAll title="Coding" verticalVideoList={codingVideos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
-                <Route path="/photo-video" element={<ViewAll title="Photo & Video Selection" verticalVideoList={photoAndVideoSelection} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
-                <Route path="/diy" element={<ViewAll title="DIY" verticalVideoList={diyVideos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
-                <Route path="/celebrations" element={<ViewAll title="Celebrations" verticalVideoList={celebrationsVideos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
-                <Route path="/software-promo" element={<ViewAll title="Software Promo" horizontalVideoList={softwarePromoVideos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
+                {sections.map((s) => (
+                    <Route path={s.link} element={<ViewAll title={s.title} videos={s.videos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
+                ))}                
             </Routes>
 
             <div id="footer">
@@ -184,7 +223,22 @@ function Root() {
 
 function Section({ title, videos, currentVideoId, setCurrentVideoId, onViewAll, selectedCategory }) {
     if (selectedCategory !== "All" && selectedCategory !== title) return;
-    
+
+    if (videos.length === 0) return (
+        <div>
+            <div className="header">
+                <h2>{title}</h2>
+                <p className="view-all" onClick={onViewAll}>
+                    View all &#10095;
+                </p>
+            </div>
+            <p>No videos match your search.</p>
+        </div>
+    )
+
+    const verticalVideos = videos.filter((v) => v.vertical === true);
+    const horziontalVideos = videos.filter((v) => v.vertical === false);
+
     return (
         <div>
             <div className="header">
@@ -194,11 +248,17 @@ function Section({ title, videos, currentVideoId, setCurrentVideoId, onViewAll, 
                 </p>
             </div>
 
-            <VideoSlider
-                videoList={videos}
+            {verticalVideos.length > 0 && <VideoSlider
+                videoList={verticalVideos}
                 currentVideoId={currentVideoId}
                 setCurrentVideoId={setCurrentVideoId}
-            />
+            />}
+
+            {horziontalVideos.length > 0 && <VideoSlider
+                videoList={horziontalVideos}
+                currentVideoId={currentVideoId}
+                setCurrentVideoId={setCurrentVideoId}
+            />}
         </div>
     );
 }
