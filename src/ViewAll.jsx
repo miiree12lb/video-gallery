@@ -39,6 +39,7 @@ function ViewAll({ title, videos, currentVideoId, setCurrentVideoId }) {
                     <div key={video.id} className="video-item">
                         <DriveVideoEmbed
                             videoUrl={video.videoUrl}
+                                instagramUrl={video.instagramUrl}
                             vertical={video.vertical}
                             title={video.title}
                             subtitle={video.subtitle}
@@ -62,6 +63,7 @@ function ViewAll({ title, videos, currentVideoId, setCurrentVideoId }) {
                     <div key={video.id} className="video-item">
                         <DriveVideoEmbed
                             videoUrl={video.videoUrl}
+                                instagramUrl={video.instagramUrl}
                             vertical={video.vertical}
                             title={video.title}
                             subtitle={video.subtitle}

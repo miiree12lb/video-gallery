@@ -156,3 +156,11 @@ label {
     }
 
 }
+
+/* Inline SVG icons (replace Font Awesome, so no third-party CDN is contacted) */
+.icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.125em;
+}

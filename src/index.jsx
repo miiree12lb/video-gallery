@@ -7,6 +7,7 @@ import ViewAll from "./ViewAll.jsx";
 import './css/root.css';
 import Footer from "./Footer.jsx";
 import Nabvar from "./Navbar.jsx";
+import Privacy from "./Privacy.jsx";
 
 import wisconsinThumb from "./assets/thumbnails/wisconsinThumb.png";
 import londonThumb from "./assets/thumbnails/londonThumb.png";
@@ -14,26 +15,26 @@ import thumb2024 from "./assets/thumbnails/2024Thumb.png";
 import menuMentorThumb from "./assets/thumbnails/MenuMentorThumb.png";
 import diy66Thumb from "./assets/thumbnails/diy66Thumb.png";
 import interrailThumb from "./assets/thumbnails/interrail.png";
-import prettySkiesThumb from "./assets/thumbnails/prettySkiesThumb.png";
-import montainsThumb from "./assets/thumbnails/mountainsThumbs.png";
-import footballStadiumsThumb from "./assets/thumbnails/footballStadiumsThmb.png";
+// import prettySkiesThumb from "./assets/thumbnails/prettySkiesThumb.png";
+// import montainsThumb from "./assets/thumbnails/mountainsThumbs.png";
+// import footballStadiumsThumb from "./assets/thumbnails/footballStadiumsThmb.png";
 import colorPaletteGeneratorThumb from "./assets/thumbnails/colorPaletteGeneratorThumb.png";
-import yaya80Thumb from "./assets/thumbnails/yaya80Thumb.JPG";
+// import yaya80Thumb from "./assets/thumbnails/yaya80Thumb.JPG";
 import reactHowToThumb from "./assets/thumbnails/reactHowToThumb.png";
 import musicPlayerThumb from "./assets/thumbnails/musicPlayerThumb.png";
 import parallaxEffectThumb from "./assets/thumbnails/parallaxThumb.png";
 import waveRepresentationThumb from "./assets/thumbnails/waveRepresentationThumb.png";
 import mathsFunctionsViewerThumb from "./assets/thumbnails/mathsViewerThumb.jpg";
 import recap2025Thumb from "./assets/thumbnails/2025Thumb.png";
-import copenhagenThumb from "./assets/thumbnails/copenhagenThumb.jpg";
-import visitedCountriesThumb from "./assets/thumbnails/visitedCountriesThumb.png";
+// import copenhagenThumb from "./assets/thumbnails/copenhagenThumb.jpg";
+// import visitedCountriesThumb from "./assets/thumbnails/visitedCountriesThumb.png";
 import loadingThumb from "./assets/thumbnails/loadingThumb.png";
 import introThumb from "./assets/thumbnails/introThumb.png";
 import orbitThumb from "./assets/thumbnails/orbitThumb.png";4
 import starThumb from "./assets/thumbnails/starThumb.png";
 import packmanThumb from "./assets/thumbnails/packmanThumb.png";
 import barcelonaThumb from "./assets/thumbnails/barcelonaThumb.png";
-import velerThumb from "./assets/thumbnails/velerThumb.png";
+// import velerThumb from "./assets/thumbnails/velerThumb.png";
 import logoThumb from "./assets/thumbnails/logoThumb.png";
 import cookiesThumb from "./assets/thumbnails/cookiesThumb.png";
 import backendThumb from "./assets/thumbnails/backendThumb.png";
@@ -42,39 +43,32 @@ import mapsThumb from "./assets/thumbnails/mapsThumb.png";
 import llmThumb from "./assets/thumbnails/llmThumb.png";
 import canadaThumb from "./assets/thumbnails/canadaThumb.png";
 
-import wisconsinVideo from "./assets/videos/Wisconsin_ Summer '24.mp4";
-import londonVideo from "./assets/videos/London.mp4";
-import video2024mp4 from "./assets/videos/2024 Around the world.mp4";
 import menuMentorVideo from "./assets/videos/MenuMentor.mp4";
 import diy66Video from "./assets/videos/diy route 66.mp4";
-import interrailVideo from "./assets/videos/interrail_ summer '25.mp4";
-import prettySkiesVideo from "./assets/videos/Pretty Skies.mp4";
-import mountainsVideo from "./assets/videos/Mountains.mp4";
-import footballStadiumsVideo from "./assets/videos/Football Stadiums.mp4";
+// import prettySkiesVideo from "./assets/videos/Pretty Skies.mp4";
+// import mountainsVideo from "./assets/videos/Mountains.mp4";
+// import footballStadiumsVideo from "./assets/videos/Football Stadiums.mp4";
 import colorPaletteGeneratorVideo from "./assets/videos/Color Palette Generator.mp4";
-import yaya80Video from "./assets/videos/Yaya 80.mp4";
+// import yaya80Video from "./assets/videos/Yaya 80.mp4";
 import reactHowToVideo from "./assets/videos/React How To.mp4";
 import musicPlayerVideo from "./assets/videos/Music Player.mp4";
 import parallaxEffectVideo from "./assets/videos/Parallax Effect.mp4";
 import waveRepresentationVideo from "./assets/videos/Wave Representation.mp4";
 import mathsFunctionsViewerVideo from "./assets/videos/Maths Viewer.mp4";
-import recap2025video from "./assets/videos/2025.mp4";
-import copenhagen from "./assets/videos/copenhagen.mp4";
-import visitedCountries from "./assets/videos/visited countries.mp4";
+// import visitedCountries from "./assets/videos/visited countries.mp4";
 import loading from "./assets/videos/loading.mp4";
 import intro from "./assets/videos/intro.mp4";
 import orbit from "./assets/videos/orbit.mp4";
 import star from "./assets/videos/star.mp4";
 import packman from "./assets/videos/packman.mp4";
 import barcelona from "./assets/videos/barcelona.mp4";
-import veler from "./assets/videos/veler.mp4";
+// import veler from "./assets/videos/veler.mp4";
 import logo from "./assets/videos/logo.mp4";
 import cookies from "./assets/videos/cookies.mp4";
 import backend from "./assets/videos/backend.mp4";
 import origens from "./assets/videos/origens.mp4";
 import maps from "./assets/videos/maps.mp4";
 import llm from "./assets/videos/llm.mp4";
-import canada from "./assets/videos/canada.mp4";
 
 import arquitecteIa1 from "./assets/videos/arquitecte-ia-1.mp4";
 import arquitecteIa2 from "./assets/videos/arquitecte-ia-2.mp4";
@@ -115,29 +109,29 @@ function Root() {
     const [recapVideos, setRecapVideos] = useState([]);
     const [softwarePromoVideos, setSoftwarePromoVideos] = useState([]);
     const [diyVideos, setDiyVideos] = useState([]);
-    const [photoAndVideoSelection, setPhotoAndVideoSelection] = useState([]);
-    const [celebrationsVideos, setCelebrationsVideos] = useState([]);
+    // const [photoAndVideoSelection, setPhotoAndVideoSelection] = useState([]);
+    // const [celebrationsVideos, setCelebrationsVideos] = useState([]);
     const [codingVideos, setCodingVideos] = useState([]);
     const [animationVideos, setAnimationVideos] = useState([]);
     const [arquitecteIaVideos, setArquitecteIaVideos] = useState([]);
     const [paradigmsVideos, setParadigmsVideos] = useState([]);
     const [digitalSecretsVideos, setDigitalSecretsVideos] = useState([]);
 
-    const video2024 = { videoUrl: video2024mp4, vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024 };
+    const video2024 = { instagramUrl: "https://www.instagram.com/reel/DEQDLqCuPom/", vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024 };
     const videoMenu = { videoUrl: menuMentorVideo, vertical: false, title: "MenuMentor", thumbnail: menuMentorThumb };
-    const videoInterrail = { videoUrl: interrailVideo, vertical: true, title: "Interrail", subtitle: "Summer '25", thumbnail: interrailThumb };
-    const videoPrettySkies = { videoUrl: prettySkiesVideo, vertical: true, title: "Pretty Skies", thumbnail: prettySkiesThumb };
+    const videoInterrail = { instagramUrl: "https://www.instagram.com/reel/DOAykh5jNUN/", vertical: true, title: "Interrail", subtitle: "Summer '25", thumbnail: interrailThumb };
+    // const videoPrettySkies = { videoUrl: prettySkiesVideo, vertical: true, title: "Pretty Skies", thumbnail: prettySkiesThumb };
     const videoMusicPlayer = { videoUrl: musicPlayerVideo, vertical: true, title: "Music Player", subtitle: "with React", thumbnail: musicPlayerThumb };
     const videoParallax = { videoUrl: parallaxEffectVideo, vertical: true, title: "Parallax Effect", subtitle: "with React", thumbnail: parallaxEffectThumb };
     const videoWave = { videoUrl: waveRepresentationVideo, vertical: true, title: "Wave Representation", subtitle: "with React", thumbnail: waveRepresentationThumb };
-    const video2025 = {videoUrl: recap2025video, vertical: true, title: "2025", thumbnail: recap2025Thumb};
-    const videoVeler = {videoUrl: veler, vertical: false, title: "Veler", thumbnail: velerThumb};
+    const video2025 = {instagramUrl: "https://www.instagram.com/reel/DS7R1dqDDot/", vertical: true, title: "2025", thumbnail: recap2025Thumb};
+    // const videoVeler = {videoUrl: veler, vertical: false, title: "Veler", thumbnail: velerThumb};
     const videoCookies = {videoUrl: cookies, vertical: true, title: "Galetes", subtitle: "Cookies", thumbnail: cookiesThumb};
     const videoBackend = {videoUrl: backend, vertical: true, title: "Backend", thumbnail: backendThumb}
 
     const initialAnimationVideos = [
         {videoUrl: logo, vertical: true, title: "Logo", thumbnail: logoThumb},
-        videoVeler,
+        // videoVeler,
         {videoUrl: barcelona, vertical: true, title: "Panot", thumbnail: barcelonaThumb},
         {videoUrl: packman, vertical: false, title: "Packman", thumbnail: packmanThumb},
         {videoUrl: orbit, vertical: false, title: "Orbit", thumbnail: orbitThumb},
@@ -147,20 +141,23 @@ function Root() {
     ];
 
     const initialTravelVideos = [
-        {videoUrl: canada, vertical: true, title: "Canada", thumbnail: canadaThumb},
-        {videoUrl: visitedCountries, vertical: true, title: "Visited Countries", subtitle: "10/06/2026", thumbnail: visitedCountriesThumb},
-        { videoUrl: copenhagen, vertical: true, title: "Copenhagen", thumbnail: copenhagenThumb },
+        {instagramUrl: "https://www.instagram.com/reel/DZTrUW2OQMK/", vertical: true, title: "Canada", thumbnail: canadaThumb},
+        // Hidden for now:
+        // {videoUrl: visitedCountries, vertical: true, title: "Visited Countries", subtitle: "10/06/2026", thumbnail: visitedCountriesThumb},
+        // Hidden for now (highlight link opens the first story on phones):
+        // { instagramUrl: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTkxMTg0OTI4NzU1Mjcy?story_media_id=3826008991638235916_1590241605", vertical: true, title: "Copenhagen", thumbnail: copenhagenThumb },
         videoInterrail,
         video2024,
-        { videoUrl: londonVideo, vertical: true, title: "London", thumbnail: londonThumb },
-        { videoUrl: wisconsinVideo, vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb },
+        { instagramUrl: "https://www.instagram.com/reel/DCzGUtdtAWT/", vertical: true, title: "London", thumbnail: londonThumb },
+        { instagramUrl: "https://www.instagram.com/reel/C_n4IA9NZic/", vertical: true, title: "Wisconsin", subtitle: "Summer '24", thumbnail: wisconsinThumb },
     ];
 
-    const initialPhotoAndVideoSelection = [
-        { videoUrl: footballStadiumsVideo, vertical: true, title: "Football Stadiums", thumbnail: footballStadiumsThumb },
-        videoPrettySkies,
-        { videoUrl: mountainsVideo, vertical: true, title: "Mountains", thumbnail: montainsThumb }
-    ];
+    // Hidden for now: Photo & Video Selection
+    // const initialPhotoAndVideoSelection = [
+        // { videoUrl: footballStadiumsVideo, vertical: true, title: "Football Stadiums", thumbnail: footballStadiumsThumb },
+        // videoPrettySkies,
+        // { videoUrl: mountainsVideo, vertical: true, title: "Mountains", thumbnail: montainsThumb }
+    // ];
 
     const initialRecapVideos = [
         video2025,
@@ -190,9 +187,10 @@ function Root() {
         videoMusicPlayer
     ];
 
-    const initialCelebrationsVideos = [
-        { videoUrl: yaya80Video, vertical: true, title: "Yaya 80", thumbnail: yaya80Thumb }
-    ];
+    // Hidden for now: Celebrations
+    // const initialCelebrationsVideos = [
+        // { videoUrl: yaya80Video, vertical: true, title: "Yaya 80", thumbnail: yaya80Thumb }
+    // ];
 
     const initialArquitecteIaVideos= [
         {videoUrl: arquitecteIa3, vertical: true, title: "Low-Code", subtitle: "Part 3", thumbnail: arquitecteIa3Thumb},
@@ -221,8 +219,8 @@ function Root() {
         setRecapVideos(assignVideoIds(initialRecapVideos));
         setSoftwarePromoVideos(assignVideoIds(initialSoftwarePromoVideos));
         setDiyVideos(assignVideoIds(initialDiyVideos));
-        setPhotoAndVideoSelection(assignVideoIds(initialPhotoAndVideoSelection));
-        setCelebrationsVideos(assignVideoIds(initialCelebrationsVideos));
+        // setPhotoAndVideoSelection(assignVideoIds(initialPhotoAndVideoSelection));
+        // setCelebrationsVideos(assignVideoIds(initialCelebrationsVideos));
         setCodingVideos(assignVideoIds(initialCodingVideos));
         setArquitecteIaVideos(assignVideoIds(initialArquitecteIaVideos));
         setParadigmsVideos(assignVideoIds(initialParadigmsVideos));
@@ -233,13 +231,13 @@ function Root() {
         {title: "Travel", videos: travelVideos, link: "/travel"},
         {title: "Year Recap", videos: recapVideos, link: "/year-recap"},
         {title: "Digital Secrets", videos: digitalSecretsVideos, link: "/digital-secrets"},
-        {title: "Programming Paradigms", videos: paradigmsVideos, linnk: "/programming-paradigms"},
+        {title: "Programming Paradigms", videos: paradigmsVideos, link: "/programming-paradigms"},
         {title: "AI Architect", videos: arquitecteIaVideos, link: "/ai-architect"},
         {title: "Coding", videos: codingVideos, link: "/coding"},
         {title: "Animations", videos: animationVideos, link: "/animations"},
-        {title: "Photo & Video Selection", videos: photoAndVideoSelection, link: "/photo-video"},
+        // {title: "Photo & Video Selection", videos: photoAndVideoSelection, link: "/photo-video"},
         {title: "DIY", videos: diyVideos, link: "/diy"},
-        {title: "Celebrations", videos: celebrationsVideos, link: "/celebrations"},
+        // {title: "Celebrations", videos: celebrationsVideos, link: "/celebrations"},
         {title: "Software Promo", videos: softwarePromoVideos, link: "/software-promo"},
     ];
 
@@ -282,6 +280,8 @@ function Root() {
                         </div>
                     }
                 />
+
+                <Route path="/privacy" element={<Privacy />} />
 
                 {sections.map((s) => (
                     <Route path={s.link} element={<ViewAll title={s.title} videos={s.videos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />

@@ -65,6 +65,7 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
                         <div key={video.id} className="video-item">
                             <DriveVideoEmbed
                                 videoUrl={video.videoUrl}
+                                instagramUrl={video.instagramUrl}
                                 vertical={video.vertical}
                                 title={video.title}
                                 subtitle={video.subtitle}

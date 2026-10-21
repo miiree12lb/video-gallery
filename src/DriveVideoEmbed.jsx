@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import "./css/slider.css";
+// @ts-ignore
+import instagramIcon from "./assets/images/socials/instagram.svg";
 
-function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlaying, onPlay, thumbnail }) {
+function DriveVideoEmbed({ videoUrl, instagramUrl, vertical, title, subtitle, videoId, isPlaying, onPlay, thumbnail }) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
     const videoRef = useRef(null);
 
@@ -30,6 +32,45 @@ function DriveVideoEmbed({ videoUrl, vertical, title, subtitle, videoId, isPlayi
             else if (vid.msRequestFullscreen) vid.msRequestFullscreen();
         }, 300);
     };
+
+    const thumbnailStyle = {
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: thumbnail ? "transparent" : "#292929",
+        backgroundImage: thumbnail ? `url(${thumbnail})` : "none",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        borderRadius: "5px",
+    };
+
+    // Videos with licensed music are only played on Instagram, where the music licence applies.
+    if (instagramUrl) {
+        return (
+            <div className="video-container" style={{ width, height }}>
+                <a
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="thumbnail-overlay instagram-link"
+                    aria-label={`Watch ${title}${subtitle ? " " + subtitle : ""} on Instagram (opens in a new tab)`}
+                    style={{ ...thumbnailStyle, textDecoration: "none", color: "inherit" }}
+                >
+                    {!thumbnail && <h4>{title}</h4>}
+                    {!thumbnail && <p>{subtitle}</p>}
+                    <span className="instagram-badge">
+                        <img src={instagramIcon} alt="" width="18" height="18" />
+                        <span className="instagram-badge-text">Watch on Instagram</span>
+                    </span>
+                </a>
+            </div>
+        );
+    }
 
     return (
         <div className="video-container"

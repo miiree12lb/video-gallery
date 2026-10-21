@@ -73,10 +73,9 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                             borderBottom: selectedCategory !== "All" ? "solid 1px #94692D" : "none"
                         }}>
                             <span>{selectedCategory === 'All' ? "Categories" : selectedCategory}</span>
-                            <i
-                                id="caret"
-                                className={`fa ${isOpen ? "fa-caret-up" : "fa-caret-down"}`}
-                            />
+                            <svg id="caret" className="icon" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+                                <path d={isOpen ? "M1 7h8L5 2z" : "M1 3h8L5 8z"} fill="currentColor" />
+                            </svg>
                         </button>
 
                         {isOpen && (
@@ -110,8 +109,11 @@ function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQu
                     />
                 )}
 
-                <button className={`search-button${showSearchBar ? "" : "-big"}`} onClick={handleShowSearchBar}>
-                    <i id={`search${showSearchBar ? "" : "-big"}`} className="fa fa-search"></i>
+                <button className={`search-button${showSearchBar ? "" : "-big"}`} onClick={handleShowSearchBar} aria-label="Search">
+                    <svg id={`search${showSearchBar ? "" : "-big"}`} className="icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                        <circle cx="6.5" cy="6.5" r="5" fill="none" stroke="currentColor" strokeWidth="2" />
+                        <line x1="10.3" y1="10.3" x2="15" y2="15" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                    </svg>
                 </button>
             </div>
         </div>

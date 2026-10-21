@@ -64,3 +64,66 @@ h1, h2 {
 .view-all-arrow {
     cursor: pointer;
 }
+
+#footer-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-privacy-link {
+    color: inherit;
+}
+
+.legal-page a {
+    color: #94692d;
+}
+
+.legal-page a:hover {
+    color: #FF4136;
+}
+
+.legal-page {
+    max-width: 760px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.legal-page p {
+    text-align: left;
+    margin: 0 0 12px 0;
+}
+
+.legal-page h2 {
+    margin-top: 28px;
+    font-size: 1.2em;
+}
+
+.legal-updated {
+    color: #aaaaaa;
+    font-size: 0.9em;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #94692d;
+    font-size: 2em;
+    padding: 0;
+}
+
+.copy-email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font: inherit;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    background: var(--hover-bg);
+    border: 1px solid #94692D;
+    border-radius: 6px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.copy-email-btn:hover { color: #94692D; }
