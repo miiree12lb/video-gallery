@@ -50,12 +50,19 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
     }
     
     const displayVideos = getDisplayVideos(initialId);
+    // Rows that fit on screen keep invisible arrow placeholders so all rows line up
+    const canScroll = videoList.length > visibleVideos;
+    const placeholderProps = { disabled: true, tabIndex: -1, "aria-hidden": true };
 
     return (
         <div className="video-slider">
             <div className="arrows-videos-container">
-                {videoList.length > visibleVideos && (
-                    <button className="arrows" id="prev" onClick={handlePrev}>
+                {canScroll ? (
+                    <button type="button" className="arrows" onClick={handlePrev} aria-label="Previous videos">
+                        &#10094;
+                    </button>
+                ) : (
+                    <button type="button" className="arrows arrows-placeholder" {...placeholderProps}>
                         &#10094;
                     </button>
                 )}
@@ -84,20 +91,26 @@ function VideoSlider({ videoList, currentVideoId, setCurrentVideoId }) {
                     ))}
                 </div>
 
-                {videoList.length > visibleVideos && (
-                    <button className="arrows" id="next" onClick={handleNext}>
+                {canScroll ? (
+                    <button type="button" className="arrows" onClick={handleNext} aria-label="Next videos">
+                        &#10095;
+                    </button>
+                ) : (
+                    <button type="button" className="arrows arrows-placeholder" {...placeholderProps}>
                         &#10095;
                     </button>
                 )}
             </div>
 
             <div className="dots-container">
-                {Array.from({ length: videoList.length }, (_, i) => (
-                    <span
+                {canScroll && Array.from({ length: videoList.length }, (_, i) => (
+                    <button
+                        type="button"
                         key={i}
                         className={`dot ${displayVideos.some((v) => v.listId === i) ? "active" : ""}`}
                         onClick={() => setInitialId(i)}
-                    ></span>
+                        aria-label={`Show video ${i + 1} of ${videoList.length}`}
+                    ></button>
                 ))}
             </div>
         </div>

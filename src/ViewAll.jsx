@@ -30,7 +30,7 @@ function ViewAll({ title, videos, currentVideoId, setCurrentVideoId }) {
     return (
         <div className="view-all-container">
             <div className="view-all-title">
-                <h1 className="view-all-arrow" onClick={() => navigate("/")}>&#10094;</h1>
+                <button type="button" className="text-link back-button" onClick={() => navigate("/")} aria-label="Back to the gallery">←</button>
                 <h1>{title}</h1>
             </div>
 

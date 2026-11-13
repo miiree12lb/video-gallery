@@ -4,120 +4,160 @@ import { useMediaQuery } from "react-responsive";
 // @ts-ignore
 import './css/navbar.css';
 // @ts-ignore
-import logo from "./assets/images/logo.png";
+import avatar from "./assets/images/avatar.jpg";
+import ThemeSwitch from "./ThemeSwitch.jsx";
 
-function Nabvar({ categories, selectedCategory, setSelectedCategory, setSearchQuery }) {
+function SearchIcon() {
+    return (
+        <svg className="icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <circle cx="6.5" cy="6.5" r="5" fill="none" stroke="currentColor" strokeWidth="2" />
+            <line x1="10.3" y1="10.3" x2="15" y2="15" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+        </svg>
+    );
+}
+
+function Navbar({ categories, selectedCategory, setSelectedCategory, searchQuery, setSearchQuery, showFilters, theme, toggleTheme }) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
     const [isOpen, setIsOpen] = useState(false);
-    const [showLeftNav, setShowLeftNav] = useState(true);
-    const [showSearchBar, setShowSearchBar] = useState(true);
-    const searchBarRef = useRef(null); 
+    const [searchOpen, setSearchOpen] = useState(false);
+    const searchRef = useRef(null);
+    const searchInputRef = useRef(null);
     const dropdownRef = useRef(null);
 
+    // On phones the search box collapses to an icon
+    const showSearchBar = isDesktop || searchOpen;
+    const showLeft = isDesktop || !searchOpen;
+
     useEffect(() => {
-        setShowSearchBar(isDesktop);
+        if (isDesktop) setSearchOpen(false);
     }, [isDesktop]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
-                if (!isDesktop) {
-                    setShowSearchBar(false);
-                    setShowLeftNav(true);
-                }
+            if (searchRef.current && !searchRef.current.contains(event.target) && !searchQuery) {
+                setSearchOpen(false);
             }
-
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
             }
         };
+        const handleKey = (event) => {
+            if (event.key === "Escape") setIsOpen(false);
+        };
 
         document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleKey);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKey);
         };
-    }, [isDesktop]);
+    }, [searchQuery]);
 
-    const handleSearch = (event) => {
-        setSearchQuery(event.target.value);
-    };
-
-    const toggleIcon = () => {
-        setIsOpen(!isOpen);
-    };
+    useEffect(() => {
+        if (searchOpen && searchInputRef.current) searchInputRef.current.focus();
+    }, [searchOpen]);
 
     const handleCategoryChange = (event) => {
         setSelectedCategory(event.target.value);
+        setIsOpen(false);
     };
 
-    const handleShowSearchBar = () => {
-        if (isDesktop) return;
-
-        setShowLeftNav(!showLeftNav);
-        setShowSearchBar(!showSearchBar);
+    const handleSearchButton = () => {
+        if (isDesktop) {
+            if (searchInputRef.current) searchInputRef.current.focus();
+            return;
+        }
+        setSearchOpen(!searchOpen);
     };
 
     return (
-        <div className="nav-bar">
-            {showLeftNav && (
-                <div className="nav-bar-left">
-                    <div className="chip">
-                        <Link to="https://miiree12lb.site/">
-                            <img src={logo} alt="logo" width="50" height="50" />
+        <div id="nav-container">
+            <nav id="nav" aria-label="Main">
+                {showLeft && (
+                    <div className="nav-left">
+                        <Link to="/" className="nav-brand" aria-label="Video Gallery, home">
+                            <img src={avatar} alt="" width="40" height="40" />
+                            <span className="nav-brand-text">
+                                <strong>Video Gallery</strong>
+                                <small>Mireia Lopez Bruch</small>
+                            </span>
                         </Link>
-                        Video Gallery
-                    </div>
 
-                    <div className="dropdown" ref={dropdownRef}>
-                        <button id="category" onClick={toggleIcon} style={{
-                            borderBottom: selectedCategory !== "All" ? "solid 1px #94692D" : "none"
-                        }}>
-                            <span>{selectedCategory === 'All' ? "Categories" : selectedCategory}</span>
-                            <svg id="caret" className="icon" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
-                                <path d={isOpen ? "M1 7h8L5 2z" : "M1 3h8L5 8z"} fill="currentColor" />
-                            </svg>
-                        </button>
+                        {showFilters && (
+                            <div className="dropdown" ref={dropdownRef}>
+                                <button
+                                    type="button"
+                                    id="category"
+                                    className={selectedCategory !== "All" ? "filtered" : ""}
+                                    onClick={() => setIsOpen(!isOpen)}
+                                    aria-expanded={isOpen}
+                                    aria-haspopup="true"
+                                >
+                                    <span>{selectedCategory === "All" ? "Categories" : selectedCategory}</span>
+                                    <svg className="icon" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+                                        <path d={isOpen ? "M1 7h8L5 2z" : "M1 3h8L5 8z"} fill="currentColor" />
+                                    </svg>
+                                </button>
 
-                        {isOpen && (
-                            <div className="dropdown-content">
-                                <div className="radio-buttons">
-                                    {categories.map((category, index) => (
-                                        <label key={index} className="custom-radio">
-                                            <input
-                                                type="radio"
-                                                name="category"
-                                                value={category}
-                                                checked={selectedCategory === category}
-                                                onChange={handleCategoryChange}
-                                            />
-                                            <span>{category}</span>
-                                        </label>
-                                    ))}
-                                </div>
+                                {isOpen && (
+                                    <div className="dropdown-content">
+                                        <div className="radio-buttons" role="radiogroup" aria-label="Category">
+                                            {categories.map((category) => (
+                                                <label key={category} className="custom-radio">
+                                                    <input
+                                                        type="radio"
+                                                        name="category"
+                                                        value={category}
+                                                        checked={selectedCategory === category}
+                                                        onChange={handleCategoryChange}
+                                                    />
+                                                    <span>{category}</span>
+                                                </label>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
-                </div>
-            )}
-
-            <div className="nav-bar-right" ref={searchBarRef}>
-                {showSearchBar && (
-                    <input
-                        type="text"
-                        placeholder="Search by (sub)title..."
-                        onChange={handleSearch}
-                    />
                 )}
 
-                <button className={`search-button${showSearchBar ? "" : "-big"}`} onClick={handleShowSearchBar} aria-label="Search">
-                    <svg id={`search${showSearchBar ? "" : "-big"}`} className="icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-                        <circle cx="6.5" cy="6.5" r="5" fill="none" stroke="currentColor" strokeWidth="2" />
-                        <line x1="10.3" y1="10.3" x2="15" y2="15" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                    </svg>
-                </button>
-            </div>
+                <div className="nav-right">
+                    {showFilters && (
+                        <div className={`nav-search${searchOpen ? " expanded" : ""}`} ref={searchRef} role="search">
+                            {showSearchBar && (
+                                <input
+                                    ref={searchInputRef}
+                                    className="search-input"
+                                    type="search"
+                                    placeholder="Search by (sub)title..."
+                                    aria-label="Search videos by title or subtitle"
+                                    value={searchQuery}
+                                    onChange={(event) => setSearchQuery(event.target.value)}
+                                />
+                            )}
+                            <button
+                                type="button"
+                                className={showSearchBar ? "search-button" : "search-button search-button-big"}
+                                onClick={handleSearchButton}
+                                aria-label="Search"
+                            >
+                                <SearchIcon />
+                            </button>
+                        </div>
+                    )}
+
+                    {showLeft && (
+                        <a className="nav-link" href="https://miiree12lb.site/" target="_blank" rel="noopener noreferrer">
+                            Portfolio ↗
+                        </a>
+                    )}
+
+                    <ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
+                </div>
+            </nav>
         </div>
     );
 }
 
-export default Nabvar;
+export default Navbar;

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mireia Lopez Bruch's Video Gallery" />
+    <meta name="theme-color" content="#151515" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>Video Gallery</title>
+    <script>
+      // Apply the saved theme before the page renders, to avoid a flash
+      try {
+        document.documentElement.classList.add(localStorage.getItem("theme") === "light" ? "light-mode" : "dark-mode");
+      } catch (e) {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+  </body>
+</html>

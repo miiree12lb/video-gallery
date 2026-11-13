@@ -36,7 +36,7 @@ export default function Privacy() {
     return (
         <div className="legal-page">
             <div className="view-all-title">
-                <button className="view-all-arrow back-button" onClick={() => navigate("/")} aria-label="Back to the gallery">&#10094;</button>
+                <button type="button" className="text-link back-button" onClick={() => navigate("/")} aria-label="Back to the gallery">←</button>
                 <h1>Privacy notice</h1>
             </div>
 

@@ -1,17 +1,48 @@
-.arrows-videos-container{
+.video-slider {
+    margin-bottom: 8px;
+}
+
+.arrows-videos-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
+/* Video cards: same look as the cards on miiree12lb.site */
 .video-container {
-    border-radius: 5px;
-    border: solid 1px #292929;
+    box-sizing: border-box;
+    border: 1px solid var(--accent-gold);
+    border-radius: 16px;
+    background-color: var(--panel-bg);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.video-container:hover,
+.video-container:focus-within {
+    border-color: var(--hover-color);
+    box-shadow: 0 0 0 1px var(--hover-color);
+}
+
+.thumbnail-overlay {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--text-color);
+}
+
+.thumbnail-overlay h4 {
+    margin: 0 0 4px;
 }
 
 .videos-container {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -21,62 +52,73 @@
 }
 
 .videos-container.horizontal {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
-    overflow: hidden;
     columns: 2;
 }
 
-.arrows {
-    background-color: #151515;
-    color: #94692D;
-    border: none;
-    cursor: pointer;
-    font-size: 2vw;
-    padding: 0;
-    margin: 0;
+.video-item h3 {
+    color: var(--text-color);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 12px 0 2px;
+    text-align: center;
 }
 
-.arrows:hover{
-    color: #FF4136;
-}
-h3 {
-    color: #FF4136;
-}
-h3, p {
+.video-item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
     margin: 0;
     text-align: center;
 }
 
+.arrows {
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: var(--gold-text);
+    cursor: pointer;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    padding: 8px;
+    margin: 0;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.arrows:hover {
+    color: var(--hover-color);
+    background-color: var(--hover-tint);
+}
+
+/* Keeps the arrow's space on rows that don't scroll, so rows line up */
+.arrows-placeholder,
+.arrows-placeholder:hover {
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .dots-container {
+    min-height: 10px;
     display: flex;
     justify-content: center;
+    gap: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
 .dot {
-    height: 10px;
     width: 10px;
-    margin: 0 5px;
-    border: solid 1px #94692D;
+    height: 10px;
+    padding: 0;
+    border: 1px solid var(--accent-gold);
     border-radius: 50%;
-    display: inline-block;
+    background: none;
     cursor: pointer;
 }
 
-.dot.active {
-    background-color: #94692D;
+.dot:hover {
+    border-color: var(--hover-color);
 }
 
-.no-videos-message {
-    text-align: center;
-    font-size: 1.2em;
-    color: #666;
-    margin: 20px 0;
-
+.dot.active {
+    background-color: var(--accent-gold);
 }
 
 @media screen and (max-width: 800px) {
@@ -89,21 +131,9 @@ h3, p {
         columns: 1;
         gap: 10px;
     }
-
-    .arrows {
-        font-size: 3vw;
-    }
-
-    #prev {
-        left: 0;
-
-    }
-
-    #next {
-        right: 0;
-    }
 }
 
+/* "Watch on Instagram" badge (sits on the thumbnail, so it keeps fixed colours) */
 .instagram-badge {
     position: absolute;
     bottom: 8px;
@@ -122,12 +152,7 @@ h3, p {
 
 .instagram-link:hover .instagram-badge,
 .instagram-link:focus-visible .instagram-badge {
-    background-color: #94692D;
-}
-
-.instagram-link:focus-visible {
-    outline: 2px solid #FF4136;
-    outline-offset: 2px;
+    background-color: #94692d;
 }
 
 /* Phones: show only the Instagram icon on the badge */

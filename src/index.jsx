@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
 import VideoSlider from "./VideoSlider.jsx";
 import ViewAll from "./ViewAll.jsx";
+import "@fontsource-variable/bricolage-grotesque";
+import './css/theme.css';
 import './css/root.css';
 import Footer from "./Footer.jsx";
-import Nabvar from "./Navbar.jsx";
+import Navbar from "./Navbar.jsx";
 import Privacy from "./Privacy.jsx";
 
 import wisconsinThumb from "./assets/thumbnails/wisconsinThumb.png";
@@ -96,12 +97,32 @@ import digitalSecrets4Thumb from "./assets/thumbnails/digitalSecrets4Thumb.png";
 import digitalSecrets5Thumb from "./assets/thumbnails/digitalSecrets5Thumb.png";
 
 
+// Unique ids for the video lists (replaces the uuid package)
+const newId = () =>
+    (typeof crypto !== "undefined" && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2) + Date.now().toString(36);
+
 function Root() {
     const navigate = useNavigate();
     const location = useLocation();
     const viewRef = useRef(null);
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
+    const [theme, setTheme] = useState(() => {
+        try { return localStorage.getItem("theme") || "dark"; } catch (e) { return "dark"; }
+    });
+
+    // Same theme handling as miiree12lb.site
+    useEffect(() => {
+        const root = document.documentElement;
+        root.classList.toggle("dark-mode", theme === "dark");
+        root.classList.toggle("light-mode", theme === "light");
+        root.setAttribute("data-theme", theme);
+        try { localStorage.setItem("theme", theme); } catch (e) { /* storage unavailable */ }
+    }, [theme]);
+
+    const toggleTheme = () => setTheme((t) => (t === "light" ? "dark" : "light"));
     const [currentVideoId, setCurrentVideoId] = useState(null);
 
     const [catalaVideos, setCatalaVideos] = useState([]);
@@ -213,7 +234,7 @@ function Root() {
     ];
 
     useEffect(() => {
-        const assignVideoIds = (videos) => videos.map((video) => ({ ...video, id: uuidv4() }));
+        const assignVideoIds = (videos) => videos.map((video) => ({ ...video, id: newId() }));
         setAnimationVideos(assignVideoIds(initialAnimationVideos));
         setTravelVideos(assignVideoIds(initialTravelVideos));
         setRecapVideos(assignVideoIds(initialRecapVideos));
@@ -260,22 +281,25 @@ function Root() {
 
     return (
         <>
-            {isHomePage && (
-                <Nabvar
-                    categories={categories}
-                    selectedCategory={selectedCategory}
-                    setSelectedCategory={setSelectedCategory}
-                    setSearchQuery={setSearchQuery}
-                />
-            )}
+            <Navbar
+                categories={categories}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                showFilters={isHomePage}
+                theme={theme}
+                toggleTheme={toggleTheme}
+            />
 
+            <main id="route">
             <Routes>
                 <Route
                     path="/"
                     element={
                         <div id="view" ref={viewRef}>
                             {sections.map((s) => (
-                                <Section title={s.title} videos={filterVideos(s.videos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll(s.link)} selectedCategory={selectedCategory} />
+                                <Section key={s.title} title={s.title} videos={filterVideos(s.videos)} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} onViewAll={() => handleViewAll(s.link)} selectedCategory={selectedCategory} />
                             ))}
                         </div>
                     }
@@ -284,13 +308,12 @@ function Root() {
                 <Route path="/privacy" element={<Privacy />} />
 
                 {sections.map((s) => (
-                    <Route path={s.link} element={<ViewAll title={s.title} videos={s.videos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
+                    <Route key={s.link} path={s.link} element={<ViewAll title={s.title} videos={s.videos} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} />} />
                 ))}                
             </Routes>
+            </main>
 
-            <div id="footer">
-                <Footer />
-            </div>
+            <Footer />
         </>
     );
 }
@@ -302,11 +325,11 @@ function Section({ title, videos, currentVideoId, setCurrentVideoId, onViewAll, 
         <div>
             <div className="header">
                 <h2>{title}</h2>
-                <p className="view-all" onClick={onViewAll}>
-                    View all &#10095;
-                </p>
+                <button type="button" className="text-link view-all" onClick={onViewAll} aria-label={`View all ${title} videos`}>
+                    View all →
+                </button>
             </div>
-            <p>No videos match your search.</p>
+            <p className="section-empty">No videos match your search.</p>
         </div>
     )
 
@@ -317,9 +340,9 @@ function Section({ title, videos, currentVideoId, setCurrentVideoId, onViewAll, 
         <div>
             <div className="header">
                 <h2>{title}</h2>
-                <p className="view-all" onClick={onViewAll}>
-                    View all &#10095;
-                </p>
+                <button type="button" className="text-link view-all" onClick={onViewAll} aria-label={`View all ${title} videos`}>
+                    View all →
+                </button>
             </div>
 
             {verticalVideos.length > 0 && <VideoSlider

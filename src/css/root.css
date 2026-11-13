@@ -1,87 +1,97 @@
-html,
-body {
-    height: 90vh;
-    margin: 0;
-    background-color:#151515;
-    font-family: "Segoe UI", Verdana, sans-serif;
-    color: white;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-h1, h2 {
-    color: #94692d;
-}
-#footer{
-    margin-top: auto;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-top: 1px solid #94692d;
-}
-#footer-text {
-    text-align: center;
-}
-#footer-logo-image {
-    width: 100px;
-    height: auto;
-}
-#view {
-    padding-top: 100px;
-}
+/* Section headers */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    gap: 16px;
+    margin: 36px 0 18px;
 }
 
-.view-all {
-    cursor: pointer;
+.section-empty {
+    color: var(--text-muted);
+    margin: 0 0 24px;
 }
 
-.view-all:hover {
-    color:#94692d;
-}
-
+/* "View all" page title */
 .view-all-title {
-    z-index: 999;
-    top: 0;
     display: flex;
     align-items: center;
-    position: -webkit-sticky;
-    position: sticky;
-    gap: 20px;
-    width: 80vw;
-    background-color: #151515;
+    gap: 16px;
+    margin: 0 0 24px;
+}
+
+.view-all-title h1 {
+    margin: 0;
+}
+
+.back-button {
+    font-size: 1.6rem;
 }
 
 .view-all-container {
-    margin-bottom: 20px;
+    margin-bottom: 36px;
 }
 
-.view-all-arrow {
-    cursor: pointer;
+/* Footer (same as miiree12lb.site) */
+#footer {
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 48px auto 0;
+    padding: 22px 0;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(148, 105, 45, 0.5);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+#footer-logo-image {
+    width: 44px;
+    height: auto;
+    display: block;
 }
 
 #footer-icons {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 18px;
+}
+
+#footer-icons a {
+    padding: 4px;
+    display: inline-flex;
+}
+
+#footer-icons img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.65;
+    transition: opacity 0.2s;
+}
+
+#footer-icons a:hover img,
+#footer-icons a:focus-visible img {
+    opacity: 1;
+}
+
+/* The social icons are white; darken them on the light theme */
+html.light-mode #footer-icons img {
+    filter: invert(1);
 }
 
 .footer-privacy-link {
     color: inherit;
 }
 
-.legal-page a {
-    color: #94692d;
+.footer-privacy-link:hover {
+    color: var(--hover-color);
 }
 
-.legal-page a:hover {
-    color: #FF4136;
-}
-
+/* Privacy page */
 .legal-page {
     max-width: 760px;
     margin-bottom: 40px;
@@ -91,26 +101,21 @@ h1, h2 {
 .legal-page p {
     text-align: left;
     margin: 0 0 12px 0;
+    max-width: 72ch;
 }
 
 .legal-page h2 {
     margin-top: 28px;
-    font-size: 1.2em;
+    margin-bottom: 8px;
+    font-size: 1.3rem;
 }
 
 .legal-updated {
-    color: #aaaaaa;
-    font-size: 0.9em;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
-.back-button {
-    background: none;
-    border: none;
-    color: #94692d;
-    font-size: 2em;
-    padding: 0;
-}
-
+/* Copy-email button on the privacy page */
 .copy-email-btn {
     display: inline-flex;
     align-items: center;
@@ -121,9 +126,13 @@ h1, h2 {
     font-size: 0.85rem;
     color: var(--text-color);
     background: var(--hover-bg);
-    border: 1px solid #94692D;
+    border: 1px solid var(--accent-gold);
     border-radius: 6px;
     cursor: pointer;
     vertical-align: middle;
 }
-.copy-email-btn:hover { color: #94692D; }
+
+.copy-email-btn:hover {
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+}

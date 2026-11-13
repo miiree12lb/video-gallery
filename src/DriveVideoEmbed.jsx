@@ -17,13 +17,15 @@ function DriveVideoEmbed({ videoUrl, instagramUrl, vertical, title, subtitle, vi
         width = `${(parseFloat(height) * 16) / 9}vw`;
     }
 
+    const label = `${title}${subtitle ? " " + subtitle : ""}`;
+
     const handlePlay = (id) => {
         onPlay(id);
 
         setTimeout(() => {
             const vid = videoRef.current;
             if (!vid) return;
-            
+
             vid.style.objectFit = "contain";
 
             // Request fullscreen
@@ -42,11 +44,10 @@ function DriveVideoEmbed({ videoUrl, instagramUrl, vertical, title, subtitle, vi
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: thumbnail ? "transparent" : "#292929",
+        backgroundColor: thumbnail ? "transparent" : "var(--hover-bg)",
         backgroundImage: thumbnail ? `url(${thumbnail})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        borderRadius: "5px",
     };
 
     // Videos with licensed music are only played on Instagram, where the music licence applies.
@@ -58,8 +59,8 @@ function DriveVideoEmbed({ videoUrl, instagramUrl, vertical, title, subtitle, vi
                     target="_blank"
                     rel="noopener noreferrer"
                     className="thumbnail-overlay instagram-link"
-                    aria-label={`Watch ${title}${subtitle ? " " + subtitle : ""} on Instagram (opens in a new tab)`}
-                    style={{ ...thumbnailStyle, textDecoration: "none", color: "inherit" }}
+                    aria-label={`Watch ${label} on Instagram (opens in a new tab)`}
+                    style={{ ...thumbnailStyle, textDecoration: "none" }}
                 >
                     {!thumbnail && <h4>{title}</h4>}
                     {!thumbnail && <p>{subtitle}</p>}
@@ -73,35 +74,18 @@ function DriveVideoEmbed({ videoUrl, instagramUrl, vertical, title, subtitle, vi
     }
 
     return (
-        <div className="video-container"
-            style={{
-                width,
-                height
-            }}
-        >
+        <div className="video-container" style={{ width, height }}>
             {!isPlaying ? (
-                <div
+                <button
+                    type="button"
                     className="thumbnail-overlay"
-                    style={{
-                        width: "100%",
-                        height: "100%",
-                        position: "relative",
-                        cursor: "pointer",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: thumbnail ? "transparent" : "#292929",
-                        backgroundImage: thumbnail ? `url(${thumbnail})` : "none",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        borderRadius: "5px",
-                    }}
+                    style={thumbnailStyle}
                     onClick={() => handlePlay(videoId)}
+                    aria-label={`Play ${label}`}
                 >
                     {!thumbnail && <h4>{title}</h4>}
                     {!thumbnail && <p>{subtitle}</p>}
-                </div>
+                </button>
             ) : (
                 <video
                     ref={videoRef}
@@ -109,16 +93,13 @@ function DriveVideoEmbed({ videoUrl, instagramUrl, vertical, title, subtitle, vi
                     src={videoUrl}
                     autoPlay
                     controls
-                    allowFullScreen
                     playsInline
                     style={{
-                        top: 0,
-                        left: 0,
                         width: "100%",
                         height: "100%",
                         border: "none",
-                        borderRadius: "5px",
                         objectFit: "cover",
+                        display: "block",
                     }}
                 ></video>
             )}

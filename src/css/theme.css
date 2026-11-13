@@ -1,0 +1,178 @@
+/* Design tokens and base styles, shared with miiree12lb.site */
+:root,
+html.dark-mode {
+    --bg-color: #151515;
+    --panel-bg: #000;
+    --hover-bg: #292929;
+    --text-color: #fff;
+    --text-muted: #a1a1aa;
+    --accent-gold: #94692d;
+    --gold-text: #c0904d;
+    --hover-color: #f0c674;
+    --on-hover: #000;
+    --hover-fill: #f0c674;
+    --hover-tint: #241c10;
+    --border-color: #94692d;
+    --nav-bg: #94692d50;
+    color-scheme: dark;
+}
+
+html.light-mode {
+    --bg-color: #f4f4f5;
+    --panel-bg: #fff;
+    --hover-bg: #e4e4e7;
+    --text-color: #18181b;
+    --text-muted: #5f5f67;
+    --accent-gold: #94692d;
+    --gold-text: #7d5a22;
+    --hover-color: #8f5a00;
+    --on-hover: #fff;
+    --hover-fill: #6b4400;
+    --hover-tint: #f8eedb;
+    --border-color: #94692d;
+    --nav-bg: #94692d50;
+    color-scheme: light;
+}
+
+:root {
+    --page-width: 1304px;
+    --font-body: "Bricolage Grotesque Variable", "Segoe UI", system-ui, sans-serif;
+}
+
+html {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+
+#route {
+    width: 100%;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding-top: 112px;
+    flex: 1 0 auto;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+}
+
+h1 {
+    margin: 8px 0 10px;
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    line-height: 1.15;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+a {
+    color: var(--gold-text);
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+button {
+    font-family: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold-text);
+    outline-offset: 3px;
+}
+
+/* Gold text links and text buttons ("View all", "Back") */
+.text-link {
+    color: var(--gold-text);
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.text-link:hover {
+    color: var(--hover-color);
+    text-decoration: underline 2px;
+    text-underline-offset: 4px;
+}
+
+/* Light/dark switch (same as miiree12lb.site) */
+.theme-switch {
+    width: 64px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-switch .slider {
+    background-color: var(--bg-color);
+    cursor: pointer;
+    border: 1px solid #94692d;
+    border-radius: 32px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px;
+    transition: background-color 0.3s, border-color 0.3s;
+    display: flex;
+    position: absolute;
+    inset: 0;
+}
+
+.theme-switch .sun-icon { color: #94692d; }
+.theme-switch .moon-icon { color: #666; }
+
+.theme-switch .thumb {
+    z-index: 2;
+    background-color: #94692d;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.theme-switch .slider:hover .thumb { background-color: var(--hover-color); }
+.theme-switch input:checked + .slider { background-color: #000; border-color: #94692d; }
+.theme-switch input:checked + .slider .moon-icon { color: #94692d; }
+.theme-switch input:checked + .slider .sun-icon { color: #666; }
+.theme-switch input:checked + .slider .thumb { transform: translateX(32px); }
+.theme-switch input:focus-visible + .slider { outline: 2px solid var(--gold-text); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-switch .slider, .theme-switch .thumb { transition: none; }
+}
