@@ -40,7 +40,7 @@ export default function Privacy() {
                 <h1>Privacy notice</h1>
             </div>
 
-            <p className="legal-updated">Last updated: 21 October 2026</p>
+            <p className="legal-updated">Last updated: 13 November 2026</p>
 
             <h2>Who is responsible</h2>
             <p>
@@ -51,7 +51,13 @@ export default function Privacy() {
             <h2>What this site does not do</h2>
             <p>
                 This site has no accounts, contact forms, comments, cookies, analytics or advertising. It does not
-                store anything in your browser and does not load fonts, scripts or other content from third-party servers.
+                load fonts, scripts or other content from third-party servers.
+            </p>
+            <p>
+                The only thing it keeps in your browser is whether you chose the light or dark theme, so the site
+                looks the same on your next visit. This is saved in your browser's local storage, stays on your
+                device and is never sent to me or to anyone else. You can remove it by clearing this site's data
+                in your browser.
             </p>
 
             <h2>What is recorded when you visit</h2>
