@@ -34,6 +34,7 @@
 }
 
 .nav-brand {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -227,28 +228,105 @@
     vertical-align: -0.125em;
 }
 
-@media screen and (max-width: 800px) {
-    .nav-brand-text,
+/* Medium widths: drop the subtitle and portfolio link so the search box keeps its room */
+@media screen and (max-width: 1050px) {
+    .nav-brand-text small,
     .nav-link {
         display: none;
     }
 
     .nav-left,
     .nav-right {
-        gap: 14px;
+        gap: 18px;
+    }
+}
+
+/* Phones: photo, categories, search icon and theme switch */
+@media screen and (max-width: 800px) {
+    #nav-container {
+        width: calc(100% - 24px);
+        margin: 12px auto;
     }
 
-    .search-input {
-        width: 100%;
+    #nav {
+        padding: 8px 10px;
+        gap: 10px;
+    }
+
+    .nav-brand-text {
+        display: none;
+    }
+
+    .nav-left,
+    .nav-right {
+        gap: 12px;
+    }
+
+    .nav-right {
+        flex-shrink: 0;
     }
 
     .nav-search.expanded {
         flex: 1;
+        min-width: 0;
+    }
+
+    .nav-right:has(.nav-search.expanded) {
+        flex: 1;
+        flex-shrink: 1;
+    }
+
+    .search-input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dropdown {
+        min-width: 0;
+    }
+
+    #category {
+        max-width: 160px;
+    }
+
+    #category span {
+        min-width: 0;
     }
 }
 
+/* Small phones: smaller switch and photo */
 @media screen and (max-width: 420px) {
+    .nav-brand img {
+        width: 34px;
+        height: 34px;
+    }
+
     #category {
-        max-width: 110px;
+        max-width: 120px;
+    }
+
+    .theme-switch {
+        width: 52px;
+        height: 28px;
+    }
+
+    .theme-switch .slider {
+        padding: 0 4px;
+    }
+
+    .theme-switch .slider svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .theme-switch .thumb {
+        width: 20px;
+        height: 20px;
+        top: 3px;
+        left: 3px;
+    }
+
+    .theme-switch input:checked + .slider .thumb {
+        transform: translateX(24px);
     }
 }

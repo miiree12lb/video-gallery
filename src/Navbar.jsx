@@ -16,6 +16,14 @@ function SearchIcon() {
     );
 }
 
+function CloseIcon() {
+    return (
+        <svg className="icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+        </svg>
+    );
+}
+
 function Navbar({ categories, selectedCategory, setSelectedCategory, searchQuery, setSearchQuery, showFilters, theme, toggleTheme }) {
     const isDesktop = useMediaQuery({ query: "(min-width: 801px)" });
     const [isOpen, setIsOpen] = useState(false);
@@ -67,8 +75,16 @@ function Navbar({ categories, selectedCategory, setSelectedCategory, searchQuery
             if (searchInputRef.current) searchInputRef.current.focus();
             return;
         }
-        setSearchOpen(!searchOpen);
+        if (searchOpen) {
+            // On phones the button closes the search box and clears the search
+            setSearchQuery("");
+            setSearchOpen(false);
+        } else {
+            setSearchOpen(true);
+        }
     };
+
+    const closeOnPhone = !isDesktop && searchOpen;
 
     return (
         <div id="nav-container">
@@ -130,7 +146,7 @@ function Navbar({ categories, selectedCategory, setSelectedCategory, searchQuery
                                     ref={searchInputRef}
                                     className="search-input"
                                     type="search"
-                                    placeholder="Search by (sub)title..."
+                                    placeholder={isDesktop ? "Search by (sub)title..." : "Search videos"}
                                     aria-label="Search videos by title or subtitle"
                                     value={searchQuery}
                                     onChange={(event) => setSearchQuery(event.target.value)}
@@ -140,9 +156,9 @@ function Navbar({ categories, selectedCategory, setSelectedCategory, searchQuery
                                 type="button"
                                 className={showSearchBar ? "search-button" : "search-button search-button-big"}
                                 onClick={handleSearchButton}
-                                aria-label="Search"
+                                aria-label={closeOnPhone ? "Close search" : "Search"}
                             >
-                                <SearchIcon />
+                                {closeOnPhone ? <CloseIcon /> : <SearchIcon />}
                             </button>
                         </div>
                     )}

@@ -67,6 +67,12 @@ body {
     box-sizing: border-box;
 }
 
+@media screen and (max-width: 800px) {
+    #route {
+        padding-top: 84px;
+    }
+}
+
 h1, h2, h3 {
     color: var(--text-color);
 }
