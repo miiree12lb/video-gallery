@@ -44,57 +44,87 @@ import mapsThumb from "./assets/thumbnails/mapsThumb.png";
 import llmThumb from "./assets/thumbnails/llmThumb.png";
 import canadaThumb from "./assets/thumbnails/canadaThumb.png";
 
-import menuMentorVideo from "./assets/videos/MenuMentor.mp4";
-import diy66Video from "./assets/videos/diy route 66.mp4";
-// import prettySkiesVideo from "./assets/videos/Pretty Skies.mp4";
-// import mountainsVideo from "./assets/videos/Mountains.mp4";
-// import footballStadiumsVideo from "./assets/videos/Football Stadiums.mp4";
-import colorPaletteGeneratorVideo from "./assets/videos/Color Palette Generator.mp4";
-// import yaya80Video from "./assets/videos/Yaya 80.mp4";
-import reactHowToVideo from "./assets/videos/React How To.mp4";
-import musicPlayerVideo from "./assets/videos/Music Player.mp4";
-import parallaxEffectVideo from "./assets/videos/Parallax Effect.mp4";
-import waveRepresentationVideo from "./assets/videos/Wave Representation.mp4";
-import mathsFunctionsViewerVideo from "./assets/videos/Maths Viewer.mp4";
-// import visitedCountries from "./assets/videos/visited countries.mp4";
-import loading from "./assets/videos/loading.mp4";
-import intro from "./assets/videos/intro.mp4";
-import orbit from "./assets/videos/orbit.mp4";
-import star from "./assets/videos/star.mp4";
-import packman from "./assets/videos/packman.mp4";
-import barcelona from "./assets/videos/barcelona.mp4";
-// import veler from "./assets/videos/veler.mp4";
-import logo from "./assets/videos/logo.mp4";
-import cookies from "./assets/videos/cookies.mp4";
-import backend from "./assets/videos/backend.mp4";
-import origens from "./assets/videos/origens.mp4";
-import maps from "./assets/videos/maps.mp4";
-import llm from "./assets/videos/llm.mp4";
+// Videos are not bundled: they are served from /videos/ on the web server.
+// Locally they live in public/videos/ (ignored by git). To add a video, put the file
+// in public/videos/, upload it to the videos/ folder on Hostalia, and add a line like these.
+const menuMentorVideo = "/videos/menumentor.mp4";
+const diy66Video = "/videos/diy-route-66.mp4";
+// const prettySkiesVideo = "/videos/pretty-skies.mp4";
+// const mountainsVideo = "/videos/mountains.mp4";
+// const footballStadiumsVideo = "/videos/football-stadiums.mp4";
+const colorPaletteGeneratorVideo = "/videos/color-palette-generator.mp4";
+// const yaya80Video = "/videos/yaya-80.mp4";
+const reactHowToVideo = "/videos/react-how-to.mp4";
+const musicPlayerVideo = "/videos/music-player.mp4";
+const parallaxEffectVideo = "/videos/parallax-effect.mp4";
+const waveRepresentationVideo = "/videos/wave-representation.mp4";
+const mathsFunctionsViewerVideo = "/videos/maths-viewer.mp4";
+// const visitedCountries = "/videos/visited-countries.mp4";
+const loading = "/videos/loading.mp4";
+const intro = "/videos/intro.mp4";
+const orbit = "/videos/orbit.mp4";
+const star = "/videos/star.mp4";
+const packman = "/videos/packman.mp4";
+const barcelona = "/videos/barcelona.mp4";
+// const veler = "/videos/veler.mp4";
+const logo = "/videos/logo.mp4";
+const cookies = "/videos/cookies.mp4";
+const backend = "/videos/backend.mp4";
+const origens = "/videos/origens.mp4";
+const maps = "/videos/maps.mp4";
+const llm = "/videos/llm.mp4";
 
-import arquitecteIa1 from "./assets/videos/arquitecte-ia-1.mp4";
-import arquitecteIa2 from "./assets/videos/arquitecte-ia-2.mp4";
-import arquitecteIa3 from "./assets/videos/arquitecte-ia-3.mp4";
+const arquitecteIa1 = "/videos/arquitecte-ia-1.mp4";
+const arquitecteIa2 = "/videos/arquitecte-ia-2.mp4";
+const arquitecteIa3 = "/videos/arquitecte-ia-3.mp4";
 import arquitecteIa1Thumb from "./assets/thumbnails/arquitecte-ia-thumb-1.png";
 import arquitecteIa2Thumb from "./assets/thumbnails/arquitecte-ia-thumb-2.png";
 import arquitecteIa3Thumb from "./assets/thumbnails/arquitecte-ia-thumb-3.png";
 
-import paradigms1 from "./assets/videos/paradigmes-1.mp4";
-import paradigms2 from "./assets/videos/paradigmes-2.mp4";
-import paradigms3 from "./assets/videos/paradigmes-3.mp4";
+const paradigms1 = "/videos/paradigmes-1.mp4";
+const paradigms2 = "/videos/paradigmes-2.mp4";
+const paradigms3 = "/videos/paradigmes-3.mp4";
 import paradigms1Thumb from "./assets/thumbnails/paradigmsThumb1.png";
 import paradigms2Thumb from "./assets/thumbnails/paradigmsThumb2.png";
 import paradigms3Thunb from "./assets/thumbnails/paradigmsThumb3.png";
 
-import digitalSecrets1 from "./assets/videos/secrets-digitals-1.mp4";
-import digitalSecrets2 from "./assets/videos/secrets-digitals-2.mp4";
-import digitalSecrets3 from "./assets/videos/secrets-digitals-3.mp4";
-import digitalSecrets4 from "./assets/videos/secrets-digitals-4.mp4";
-import digitalSecrets5 from "./assets/videos/secrets-digitals-5.mp4";
+const digitalSecrets1 = "/videos/secrets-digitals-1.mp4";
+const digitalSecrets2 = "/videos/secrets-digitals-2.mp4";
+const digitalSecrets3 = "/videos/secrets-digitals-3.mp4";
+const digitalSecrets4 = "/videos/secrets-digitals-4.mp4";
+const digitalSecrets5 = "/videos/secrets-digitals-5.mp4";
 import digitalSecrets1Thumb from "./assets/thumbnails/digitalSecrets1Thumb.png";
 import digitalSecrets2Thumb from "./assets/thumbnails/digitalSecrets2Thumb.png";
 import digitalSecrets3Thumb from "./assets/thumbnails/digitalSecrets3Thumb.png";
 import digitalSecrets4Thumb from "./assets/thumbnails/digitalSecrets4Thumb.png";
 import digitalSecrets5Thumb from "./assets/thumbnails/digitalSecrets5Thumb.png";
+
+const ethicalCode1 = "/videos/codi-etic-1.mp4";
+const ethicalCode2 = "/videos/codi-etic-2.mp4";
+const ethicalCode3 = "/videos/codi-etic-3.mp4";
+const ethicalCode4 = "/videos/codi-etic-4.mp4";
+import ethicalCode1Thumb from "./assets/thumbnails/codiEtic1Thumb.jpg";
+import ethicalCode2Thumb from "./assets/thumbnails/codiEtic2Thumb.jpg";
+import ethicalCode3Thumb from "./assets/thumbnails/codiEtic3Thumb.jpg";
+import ethicalCode4Thumb from "./assets/thumbnails/codiEtic4Thumb.jpg";
+
+const algorithmOfLife1 = "/videos/algoritme-vida-1.mp4";
+const algorithmOfLife2 = "/videos/algoritme-vida-2.mp4";
+const algorithmOfLife3 = "/videos/algoritme-vida-3.mp4";
+const algorithmOfLife4 = "/videos/algoritme-vida-4.mp4";
+import algorithmOfLife1Thumb from "./assets/thumbnails/algoritmeVida1Thumb.jpg";
+import algorithmOfLife2Thumb from "./assets/thumbnails/algoritmeVida2Thumb.jpg";
+import algorithmOfLife3Thumb from "./assets/thumbnails/algoritmeVida3Thumb.jpg";
+import algorithmOfLife4Thumb from "./assets/thumbnails/algoritmeVida4Thumb.jpg";
+
+const aprendre = "/videos/aprendre.mp4";
+const hiperfocus = "/videos/hiperfocus.mp4";
+const overfitting = "/videos/overfitting.mp4";
+const turing = "/videos/turing.mp4";
+import aprendreThumb from "./assets/thumbnails/aprendreThumb.png";
+import hiperfocusThumb from "./assets/thumbnails/hiperfocusThumb.jpg";
+import overfittingThumb from "./assets/thumbnails/overfittingThumb.jpg";
+import turingThumb from "./assets/thumbnails/turingThumb.jpg";
 
 
 // Unique ids for the video lists (replaces the uuid package)
@@ -137,6 +167,9 @@ function Root() {
     const [arquitecteIaVideos, setArquitecteIaVideos] = useState([]);
     const [paradigmsVideos, setParadigmsVideos] = useState([]);
     const [digitalSecretsVideos, setDigitalSecretsVideos] = useState([]);
+    const [neurodiversityVideos, setNeurodiversityVideos] = useState([]);
+    const [ethicalCodeVideos, setEthicalCodeVideos] = useState([]);
+    const [algorithmOfLifeVideos, setAlgorithmOfLifeVideos] = useState([]);
 
     const video2024 = { instagramUrl: "https://www.instagram.com/reel/DEQDLqCuPom/", vertical: true, title: "2024", subtitle: "Around the world", thumbnail: thumb2024 };
     const videoMenu = { videoUrl: menuMentorVideo, vertical: false, title: "MenuMentor", thumbnail: menuMentorThumb };
@@ -197,6 +230,8 @@ function Root() {
     ];
 
     const initialCodingVideos = [
+        {videoUrl: turing, title: "Alan Turing", subtitle: "Breaking Enigma", vertical: true, thumbnail: turingThumb},
+        {videoUrl: aprendre, title: "Breathe and Program", vertical: true, thumbnail: aprendreThumb},
         {videoUrl: llm, title: "LLM", vertical: true, thumbnail: llmThumb},
         {videoUrl: maps, title: "Maps", subtitle: "Dijkstra i A*", vertical: true, thumbnail: mapsThumb},
         {videoUrl: origens, title: "Programació i Dona", vertical: true, thumbnail: origensThumb},
@@ -225,6 +260,26 @@ function Root() {
         {videoUrl: paradigms1, vertical: true, title: "Imperative vs Declarative", subtitle: "Part 1", thumbnail: paradigms1Thumb}
     ];
 
+    // Two more episodes to come; add part numbers once the order is known
+    const initialNeurodiversityVideos = [
+        {videoUrl: hiperfocus, vertical: true, title: "Hyperfocus", thumbnail: hiperfocusThumb},
+        {videoUrl: overfitting, vertical: true, title: "Overfitting", thumbnail: overfittingThumb},
+    ];
+
+    const initialEthicalCodeVideos = [
+        {videoUrl: ethicalCode4, vertical: true, title: "Deepfakes", subtitle: "Part 4", thumbnail: ethicalCode4Thumb},
+        {videoUrl: ethicalCode3, vertical: true, title: "Soft Delete", subtitle: "Part 3", thumbnail: ethicalCode3Thumb},
+        {videoUrl: ethicalCode2, vertical: true, title: "AI Bias", subtitle: "Part 2", thumbnail: ethicalCode2Thumb},
+        {videoUrl: ethicalCode1, vertical: true, title: "The Algorithm", subtitle: "Part 1", thumbnail: ethicalCode1Thumb},
+    ];
+
+    const initialAlgorithmOfLifeVideos = [
+        {videoUrl: algorithmOfLife4, vertical: true, title: "Technical Debt", subtitle: "Part 4", thumbnail: algorithmOfLife4Thumb},
+        {videoUrl: algorithmOfLife3, vertical: true, title: "Infinite Loop", subtitle: "Part 3", thumbnail: algorithmOfLife3Thumb},
+        {videoUrl: algorithmOfLife2, vertical: true, title: "Garbage Collector", subtitle: "Part 2", thumbnail: algorithmOfLife2Thumb},
+        {videoUrl: algorithmOfLife1, vertical: true, title: "Divide and Conquer", subtitle: "Part 1", thumbnail: algorithmOfLife1Thumb},
+    ];
+
     const initialDigitalSecretsVideos = [
         {videoUrl: digitalSecrets5, vertical: true, title: "Quantum Threat", subtitle: "Part 5", thumbnail: digitalSecrets5Thumb},
         {videoUrl: digitalSecrets4, vertical: true, title: "HTTPS", subtitle: "Part 4", thumbnail: digitalSecrets4Thumb},
@@ -246,11 +301,17 @@ function Root() {
         setArquitecteIaVideos(assignVideoIds(initialArquitecteIaVideos));
         setParadigmsVideos(assignVideoIds(initialParadigmsVideos));
         setDigitalSecretsVideos(assignVideoIds(initialDigitalSecretsVideos));
+        setNeurodiversityVideos(assignVideoIds(initialNeurodiversityVideos));
+        setEthicalCodeVideos(assignVideoIds(initialEthicalCodeVideos));
+        setAlgorithmOfLifeVideos(assignVideoIds(initialAlgorithmOfLifeVideos));
     }, []);
 
     const sections = [
         {title: "Travel", videos: travelVideos, link: "/travel"},
         {title: "Year Recap", videos: recapVideos, link: "/year-recap"},
+        {title: "Neurodiversity & AI", videos: neurodiversityVideos, link: "/neurodiversity-ai"},
+        {title: "Ethical Code", videos: ethicalCodeVideos, link: "/ethical-code"},
+        {title: "Algorithm of Life", videos: algorithmOfLifeVideos, link: "/algorithm-of-life"},
         {title: "Digital Secrets", videos: digitalSecretsVideos, link: "/digital-secrets"},
         {title: "Programming Paradigms", videos: paradigmsVideos, link: "/programming-paradigms"},
         {title: "AI Architect", videos: arquitecteIaVideos, link: "/ai-architect"},

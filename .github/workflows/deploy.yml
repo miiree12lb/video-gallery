@@ -1,0 +1,73 @@
+# Builds the site and uploads it to Hostalia on every push to main.
+#
+# Needs these repository secrets (Settings > Secrets and variables > Actions > Secrets):
+#   FTP_SERVER    the FTP host from Hostalia's control panel
+#   FTP_USERNAME  the FTP user
+#   FTP_PASSWORD  the FTP password
+# And this repository variable (same page, "Variables" tab):
+#   FTP_SERVER_DIR  the site's folder on the server, ending in "/",
+#                   e.g. "miiree12lb-video-gallery.com/". Required: the FTP login opens
+#                   in the hosting account's root, which must never be deployed to.
+#
+# The videos/ folder on the server is never uploaded to or deleted: videos are uploaded by hand.
+
+name: Deploy to Hostalia
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never run two deploys at the same time
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the server folder is set
+        env:
+          FTP_SERVER_DIR: ${{ vars.FTP_SERVER_DIR }}
+        run: |
+          case "$FTP_SERVER_DIR" in
+            ""|"./"|"/"|".") echo "::error::Set the FTP_SERVER_DIR repository variable to the site's folder, e.g. miiree12lb-video-gallery.com/"; exit 1 ;;
+            */) echo "Deploying to $FTP_SERVER_DIR" ;;
+            *) echo "::error::FTP_SERVER_DIR must end with /"; exit 1 ;;
+          esac
+
+      - name: Check out the code
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload to Hostalia over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./build/
+          server-dir: ${{ vars.FTP_SERVER_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            videos/**
+            **/videos/**

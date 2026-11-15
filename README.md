@@ -30,7 +30,7 @@ src/Navbar.jsx         Nav bar: category filter, search, portfolio link and them
 src/ThemeSwitch.jsx    Light/dark switch
 src/Privacy.jsx        Privacy notice
 src/css/theme.css      Colours, font and light/dark themes shared with miiree12lb.site
-.htaccess              Sends every route to the app on Apache
+public/.htaccess       Sends every route to the app on Apache
 ```
 
 Each video is a small object (title, subtitle, thumbnail, orientation, and either a video file or an Instagram link), and one list of categories drives both the home page rows and the "View all" routes.
@@ -46,6 +46,10 @@ npm start
 
 This starts the Vite dev server at http://localhost:3000.
 
-The video files themselves are not in this repository (they're large, so `videos/` is ignored by git). To run the full site, add the files to `src/assets/videos/` with the names imported in `src/index.jsx`.
+The video files themselves are not in this repository (they're large, so `videos/` is ignored by git). They are served from the `videos/` folder on the web server and are not part of the build. To play them locally, put them in `public/videos/` with the names used in `src/index.jsx`.
 
-To publish, run `npm run build` and upload the contents of `build/` to the web server, together with the `.htaccess` file from the project root.
+## Deploying
+
+Every push to `main` builds the site and uploads it to the web server over FTPS (`.github/workflows/deploy.yml`). The workflow only uploads files that changed and never touches the server's `videos/` folder. It needs the repository secrets `FTP_SERVER`, `FTP_USERNAME` and `FTP_PASSWORD`, and the variable `FTP_SERVER_DIR` (the site's folder on the server, e.g. `miiree12lb-video-gallery.com/`).
+
+To add a video: put the file in `public/videos/`, upload it to `videos/` on the server, then add it to `src/index.jsx` and push.

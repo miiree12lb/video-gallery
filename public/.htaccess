@@ -7,3 +7,8 @@
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteRule ^ index.html [QSA,L]
 </IfModule>
+
+# Hide the deploy tool's bookkeeping file from visitors
+<Files ".ftp-deploy-sync-state.json">
+    Require all denied
+</Files>
