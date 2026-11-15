@@ -117,13 +117,18 @@ import algorithmOfLife2Thumb from "./assets/thumbnails/algoritmeVida2Thumb.jpg";
 import algorithmOfLife3Thumb from "./assets/thumbnails/algoritmeVida3Thumb.jpg";
 import algorithmOfLife4Thumb from "./assets/thumbnails/algoritmeVida4Thumb.jpg";
 
-const aprendre = "/videos/aprendre.mp4";
-const hiperfocus = "/videos/hiperfocus.mp4";
 const overfitting = "/videos/overfitting.mp4";
+const weightsBiases = "/videos/weights-and-biases.mp4";
+const hiperfocus = "/videos/hiperfocus.mp4";
+const masking = "/videos/masking.mp4";
+import overfittingThumb from "./assets/thumbnails/overfittingThumb.jpg";
+import weightsBiasesThumb from "./assets/thumbnails/weightsBiasesThumb.jpg";
+import hiperfocusThumb from "./assets/thumbnails/hiperfocusThumb.jpg";
+import maskingThumb from "./assets/thumbnails/maskingThumb.jpg";
+
+const aprendre = "/videos/aprendre.mp4";
 const turing = "/videos/turing.mp4";
 import aprendreThumb from "./assets/thumbnails/aprendreThumb.png";
-import hiperfocusThumb from "./assets/thumbnails/hiperfocusThumb.jpg";
-import overfittingThumb from "./assets/thumbnails/overfittingThumb.jpg";
 import turingThumb from "./assets/thumbnails/turingThumb.jpg";
 
 
@@ -260,10 +265,11 @@ function Root() {
         {videoUrl: paradigms1, vertical: true, title: "Imperative vs Declarative", subtitle: "Part 1", thumbnail: paradigms1Thumb}
     ];
 
-    // Two more episodes to come; add part numbers once the order is known
     const initialNeurodiversityVideos = [
-        {videoUrl: hiperfocus, vertical: true, title: "Hyperfocus", thumbnail: hiperfocusThumb},
-        {videoUrl: overfitting, vertical: true, title: "Overfitting", thumbnail: overfittingThumb},
+        {videoUrl: masking, vertical: true, title: "Masking", subtitle: "Part 4", thumbnail: maskingThumb},
+        {videoUrl: hiperfocus, vertical: true, title: "Hyperfocus", subtitle: "Part 3", thumbnail: hiperfocusThumb},
+        {videoUrl: weightsBiases, vertical: true, title: "Weights & Biases", subtitle: "Part 2", thumbnail: weightsBiasesThumb},
+        {videoUrl: overfitting, vertical: true, title: "Overfitting", subtitle: "Part 1", thumbnail: overfittingThumb},
     ];
 
     const initialEthicalCodeVideos = [
